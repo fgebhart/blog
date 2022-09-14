@@ -1,0 +1,16 @@
+name: Publish Blog
+on:
+  push:
+    branches:
+      - publish_mkdocs_ci   # TODO change to `main`
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - run: poetry install
+      - run: poetry run mkdocs gh-deploy --force
