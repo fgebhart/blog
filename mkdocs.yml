@@ -42,15 +42,15 @@ extra:
   social:
     - icon: fontawesome/solid/address-book
       link: https://fgebhart.dev
-      name: My personal website
+      name: My website
     - icon: fontawesome/brands/twitter 
       link: https://twitter.com/FabianGebhart
-      name: My twitter profile
+      name: My twitter
     - icon: fontawesome/brands/github 
       link: https://github.com/fgebhart
-      name: My github profile
+      name: My github
     - icon: fontawesome/brands/linkedin 
       link: https://www.linkedin.com/in/fabian-gebhart/
-      name: My linkedin profile
+      name: My linkedin
 
 copyright: Copyright &copy; 2022 Fabian Gebhart
