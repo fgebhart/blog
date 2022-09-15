@@ -3,6 +3,7 @@ tags:
   - python
   - markdown
   - blog
+comments: true
 ---
 
 # My First Blog Post

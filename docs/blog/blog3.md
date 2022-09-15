@@ -1,6 +1,7 @@
 ---
 tags:
   - markdown
+comments: true
 ---
 
 # My Third Post
