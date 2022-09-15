@@ -1,6 +1,7 @@
 ---
 tags:
   - python
+comments: true
 ---
 
 # My Second Post
