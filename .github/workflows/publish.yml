@@ -22,5 +22,11 @@ jobs:
       - name: Install dependencies
         run: poetry install --no-interaction
 
+      - name: Cache mkdocs .cache dir
+        uses: actions/cache@v2
+        with:
+          key: ${{ github.ref }}
+          path: .cache
+
       - name: Deploy mkdocs to Github Pages
         run: poetry run mkdocs gh-deploy --force

@@ -11,7 +11,7 @@ theme:
   palette:
     # Palette toggle for light mode
     - scheme: default
-      primary: blue grey
+      primary: teal
       toggle:
         icon: material/brightness-7 
         name: Switch to dark mode
@@ -30,9 +30,11 @@ theme:
     repo: fontawesome/brands/github
   features:
     - navigation.sections   # Disable sections once blog posts number increases
+    - navigation.top
 
 plugins:
   - search
+  - social
   - tags:
       tags_file: tags.md
   - git-revision-date-localized:
