@@ -26,6 +26,8 @@ theme:
     text: Ubuntu
   logo: assets/octopus.png
   favicon: assets/octopus.png
+  icon:
+    repo: fontawesome/brands/github
   features:
     - navigation.sections   # Disable sections once blog posts number increases
 
