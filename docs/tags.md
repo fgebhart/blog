@@ -1,3 +1,3 @@
 # Tags
 
-This page lists all available tags and the given blog posts.
+This page lists all available tags and the corresponding blog posts.
