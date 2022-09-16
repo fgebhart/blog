@@ -1,4 +1,4 @@
-site_name: fgebhart's Blog
+site_name: fgebhart/blog
 
 site_url: https://blog.fgebhart.dev/
 repo_url: https://github.com/fgebhart/blog
@@ -28,6 +28,19 @@ theme:
   favicon: assets/octopus.png
   icon:
     repo: fontawesome/brands/github
+    admonition:
+      note: fontawesome/solid/note-sticky
+      abstract: fontawesome/solid/book
+      info: fontawesome/solid/circle-info
+      tip: fontawesome/solid/bullhorn
+      success: fontawesome/solid/check
+      question: fontawesome/solid/circle-question
+      warning: fontawesome/solid/triangle-exclamation
+      failure: fontawesome/solid/bomb
+      danger: fontawesome/solid/skull
+      bug: fontawesome/solid/robot
+      example: fontawesome/solid/flask
+      quote: fontawesome/solid/quote-left
   features:
     - navigation.sections   # Disable sections once blog posts number increases
     - navigation.top
@@ -39,6 +52,15 @@ plugins:
       tags_file: tags.md
   - git-revision-date-localized:
       enable_creation_date: true
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 extra:
   analytics:
