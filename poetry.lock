@@ -10,6 +10,14 @@ python-versions = ">=3.6"
 pytz = ">=2015.7"
 
 [[package]]
+name = "bracex"
+version = "2.3.post1"
+description = "Bash style brace expander."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "cairocffi"
 version = "1.3.0"
 description = "cffi-based cairo bindings for Python"
@@ -245,6 +253,19 @@ watchdog = ">=2.0"
 i18n = ["babel (>=2.9.0)"]
 
 [[package]]
+name = "mkdocs-awesome-pages-plugin"
+version = "2.8.0"
+description = "An MkDocs plugin that simplifies configuring page titles and their order"
+category = "main"
+optional = false
+python-versions = ">=3.6.2"
+
+[package.dependencies]
+mkdocs = ">=1"
+natsort = ">=8.1.0"
+wcmatch = ">=7"
+
+[[package]]
 name = "mkdocs-git-revision-date-localized-plugin"
 version = "1.1.0"
 description = "Mkdocs plugin that enables displaying the localized date of the last git modification of a markdown file."
@@ -283,6 +304,18 @@ description = "Extension pack for Python Markdown."
 category = "main"
 optional = false
 python-versions = ">=3.6"
+
+[[package]]
+name = "natsort"
+version = "8.2.0"
+description = "Simple yet flexible natural sorting in Python."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+fast = ["fastnumbers (>=2.0.0)"]
+icu = ["PyICU (>=1.0.0)"]
 
 [[package]]
 name = "packaging"
@@ -460,6 +493,17 @@ python-versions = ">=3.6"
 watchmedo = ["PyYAML (>=3.10)"]
 
 [[package]]
+name = "wcmatch"
+version = "8.4"
+description = "Wildcard/glob file name matcher."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+bracex = ">=2.1.1"
+
+[[package]]
 name = "webencodings"
 version = "0.5.1"
 description = "Character encoding aliases for legacy web content"
@@ -482,10 +526,11 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "b5c654224be9e16002f0118c8723587689dc71c5d32fa267ebd69206811f5302"
+content-hash = "f057de7c21b12e2242ce8862e7a81ac33aadc82825c7b27fbb82a0b44f775ba6"
 
 [metadata.files]
 babel = []
+bracex = []
 cairocffi = []
 cairosvg = []
 certifi = []
@@ -567,9 +612,11 @@ markupsafe = [
 ]
 mergedeep = []
 mkdocs = []
+mkdocs-awesome-pages-plugin = []
 mkdocs-git-revision-date-localized-plugin = []
 mkdocs-material = []
 mkdocs-material-extensions = []
+natsort = []
 packaging = [
     {file = "packaging-21.3-py3-none-any.whl", hash = "sha256:ef103e05f519cdc783ae24ea4e2e0f508a9c99b2d4969652eed6a2e1ea5bd522"},
     {file = "packaging-21.3.tar.gz", hash = "sha256:dd47c42927d89ab911e606518907cc2d3a1f38bbd026385970643f9c5b8ecfeb"},
@@ -667,6 +714,7 @@ watchdog = [
     {file = "watchdog-2.1.9-py3-none-win_ia64.whl", hash = "sha256:ad576a565260d8f99d97f2e64b0f97a48228317095908568a9d5c786c829d428"},
     {file = "watchdog-2.1.9.tar.gz", hash = "sha256:43ce20ebb36a51f21fa376f76d1d4692452b2527ccd601950d69ed36b9e21609"},
 ]
+wcmatch = []
 webencodings = [
     {file = "webencodings-0.5.1-py2.py3-none-any.whl", hash = "sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78"},
     {file = "webencodings-0.5.1.tar.gz", hash = "sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923"},

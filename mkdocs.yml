@@ -47,6 +47,7 @@ theme:
 
 plugins:
   - search
+  - awesome-pages
   - social
   - tags:
       tags_file: tags.md
