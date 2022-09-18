@@ -48,7 +48,8 @@ theme:
 plugins:
   - search
   - awesome-pages
-  - social
+  - social:
+      cards: !ENV [CARDS, false]
   - tags:
       tags_file: tags.md
   - git-revision-date-localized:
