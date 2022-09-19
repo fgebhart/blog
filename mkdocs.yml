@@ -61,6 +61,8 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.keys
+  - abbr
+  - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji

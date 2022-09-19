@@ -10,8 +10,8 @@ tags:
 ---
 
 # How to Use a Custom Namecheap Domain with GitHub Pages?
-This post will guide you through the different steps needed to configure a custom domain you obtained from
-[Namecheap](https://www.namecheap.com/) with your static website hosted on GitHub Pages.
+This post will guide you through the different steps needed to configure a custom [Namecheap](https://www.namecheap.com/)
+domain with your static website hosted on GitHub Pages.
 
 !!! Note
     This guide focuses on [Namecheap](https://www.namecheap.com/) as a domain name provider. The overall approach is
@@ -20,9 +20,10 @@ This post will guide you through the different steps needed to configure a custo
 
 
 ## Motivation
-Sometimes you want your GitHub Page to be reached via a custom domain to provide a catchy name or to put it next to your
-existing website by using a subdomain. Note, that there are a [bunch of resources out there](#external-links) already,
-but it seemed like none of them puts all the required pieces into a single place, thus I came up with this guide.
+Sometimes you want your GitHub Page to be reachable via a custom domain to provide a catchy name or to put it next to
+your existing website by using a subdomain. Note, that there are a [bunch of resources on this topic out there](#external-links)
+already, but it seemed like none of them puts all the required pieces into a single place, thus I came up with this
+guide.
 
 ## Example
 Consider the following example: The GitHub repo of this blog is located at `github.com/fgebhart/blog` and the default
@@ -99,12 +100,12 @@ GitHub.
 ### GitHub Pages Configuration
 
 Go to your GitHub repository and navigate to the GitHub Pages settings. For this blog the URL is [https://github.com/fgebhart/blog/settings/pages](https://github.com/fgebhart/blog/settings/pages).
-Given the above mentioned prerequisites, your static website should already be deployed to GitHub Pages and accessible
-via the default `github.io` URL (if you still need to set up the deploy, I'd suggest having a look at the [GitHub Actions Workflow of this blog](https://github.com/fgebhart/blog/blob/main/.github/workflows/publish.yml),
+Given the above-mentioned prerequisites, your static website should already be deployed to GitHub Pages and accessible
+via the default `github.io` URL (if you still need to set up the deployment, I'd suggest having a look at the [GitHub Actions Workflow of this blog](https://github.com/fgebhart/blog/blob/main/.github/workflows/publish.yml),
 check out the [GitHub docs on publishing your website](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 or reading the [docs of mkdocs-material regarding publishing](https://squidfunk.github.io/mkdocs-material/publishing-your-site/)).
 
-Scroll down to the `Custom Domain` Section and enter your custom domain into the input field. In the case of this blog
+Scroll down to the `Custom Domain` section and enter your custom domain into the input field. In the case of this blog
 `blog.fgebhart.dev` was entered:
 
 ![GitHub Pages Custom Domain Settings](images/github-pages-with-namecheap-domain/github_pages_custom_domain.png)
@@ -131,13 +132,13 @@ using the above-mentioned `dig` command helps verify that things are set up as i
 ### Each Commit to my Repo seems to break the configured Domain Routing
 
 In case a push/commit to your repo containing the source code of your static website seems to break the DNS
-configuration, you might need to add a `CNAME` file to your repo. Usually, configuring the custom domain on the GitHub
-Pages settings tab will add a `CNAME` file to the branch from which your static page will be deployed. However, a GitHub
-Action could be implemented in such a way, that it would overwrite the `CNAME` file with every commit. If this is the
+configuration, you might need to add a CNAME file to your repo. Usually, configuring the custom domain on the GitHub
+Pages settings tab will add a CNAME file to the branch from which your static page will be deployed. However, a GitHub
+Action could be implemented in such a way, that it would overwrite the CNAME file with every commit. If this is the
 case, you would need to add the file manually to your repo. To do so, have a look at the deploy branch of your repo
 (usually `gh-pages`) to conclude which folder of your source code branch will be deployed from the deploy branch. In the
 root of this folder, you have to add a file called `CNAME` (all uppercase). The content of the file must contain a single
-line only, which is the custom URL to point to your GitHub Page. In the case of this blog, [this is the file](https://github.com/fgebhart/blog/blob/main/docs/CNAME),
+line only, which is the custom URL to point to your GitHub Page. In the case of this blog, [here is the CNAME file](https://github.com/fgebhart/blog/blob/main/docs/CNAME)
 which contains `blog.fgebhart.dev`. For more details have a look at the [GitHub Troubleshooting docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages#cname-errors).
 
 
@@ -145,3 +146,8 @@ which contains `blog.fgebhart.dev`. For more details have a look at the [GitHub 
 * [GitHub docs on managing custom domains with GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site) (Visited 2022-09-18)
 * [Namecheap Knowledgebase on linking your domain to GitHub Pages](https://www.namecheap.com/support/knowledgebase/article.aspx/9645/2208/how-do-i-link-my-domain-to-github-pages/) (Visited 2022-09-18)
 * [Namecheap guide on the different DNS types](https://www.namecheap.com/guru-guides/dns-records/) (Visited 2022-09-19)
+
+
+*[apex domain]: Apex domains are known as base, root or naked domains. It does not contain any subdomain, e.g. fgebhart.dev
+*[DNS]: Domain Name System
+*[CNAME]: "Canonical Name" - DNS record type to point the name of your website to your A record
