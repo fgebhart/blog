@@ -1,6 +1,6 @@
 # Welcome
 
-Hi :wave: my name is Fabian Gebhart and this is my blog.
+Hi :wave: my name is [Fabian Gebhart](https://fgebhart.dev) and this is my blog.
 
 I blog about tech, Python, the PyData stack, 3d-Printing and more. A large fraction of my posts are how-to guides, which hopefully help you solve a particular problem. Head over to the [tags section](tags.md) to see all currently existing topics.
 

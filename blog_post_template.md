@@ -1,13 +1,10 @@
 ---
-# provide some tags - reuse existing ones
-tags:
-  - python
-  - markdown
-  - blog
-# enable comment section
+title: some title
+description: some description (will be visible on social cards)
 comments: true
-# provide some description for social cards
-description: Nullam urna elit, malesuada eget finibus ut, ac tortor. 
+tags:
+  - some
+  - tags
 ---
 
 # My First Blog Post

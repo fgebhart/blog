@@ -29,4 +29,6 @@ jobs:
           path: .cache
 
       - name: Deploy mkdocs to Github Pages
+        env:
+          CARDS: true
         run: poetry run mkdocs gh-deploy --force

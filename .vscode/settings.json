@@ -1,5 +1,16 @@
 {
     "yaml.schemas": {
         "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
-    }
+    },
+    "grammarly.files.include": [
+        "**/*.md"
+    ],
+    "cSpell.words": [
+        "fgebhart",
+        "fgebhart.dev",
+        "fontawesome",
+        "mkdocs",
+        "Namecheap",
+        "tldr"
+    ],
 }
