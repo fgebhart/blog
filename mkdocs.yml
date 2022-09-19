@@ -30,17 +30,17 @@ theme:
     repo: fontawesome/brands/github
     admonition:
       note: fontawesome/solid/note-sticky
-      abstract: fontawesome/solid/book
-      info: fontawesome/solid/circle-info
-      tip: fontawesome/solid/bullhorn
-      success: fontawesome/solid/check
-      question: fontawesome/solid/circle-question
-      warning: fontawesome/solid/triangle-exclamation
-      failure: fontawesome/solid/bomb
-      danger: fontawesome/solid/skull
+      abstract: fontawesome/solid/book                  # summary, tldr
+      info: fontawesome/solid/circle-info               # todo
+      tip: fontawesome/solid/bullhorn                   # hint, important
+      success: fontawesome/solid/check                  # check, done
+      question: fontawesome/solid/circle-question       # help, faq
+      warning: fontawesome/solid/triangle-exclamation   # caution, attention
+      failure: fontawesome/solid/bomb                   # fail, missing
+      danger: fontawesome/solid/skull                   # error
       bug: fontawesome/solid/robot
       example: fontawesome/solid/flask
-      quote: fontawesome/solid/quote-left
+      quote: fontawesome/solid/quote-left               # cite
   features:
     - navigation.sections   # Disable sections once blog posts number increases
     - navigation.top
@@ -57,8 +57,10 @@ plugins:
 
 markdown_extensions:
   - attr_list
+  - md_in_html
   - admonition
   - pymdownx.details
+  - pymdownx.keys
   - pymdownx.superfences
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
