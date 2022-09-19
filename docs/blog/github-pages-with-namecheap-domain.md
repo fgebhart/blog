@@ -117,7 +117,7 @@ In case your Namecheap configuration was successful as described above, the GitH
 be able to hit the `Save` button. It is also strongly recommended to enable HTTPS for your custom domain by checking the
 `Enforce HTTPS` box.
 
-After a moment your static website should be accessible via your new domain.
+After a moment your static website should be accessible via your new domain. 🐙
 
 -------------------------------------------------------------------------------------------------------------------------
 
