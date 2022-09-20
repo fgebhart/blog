@@ -18,4 +18,4 @@ I blog about tech, Python, the PyData stack, 3d-Printing and more. A large fract
 
 <br>
 
-enjoy reading! :heart:
+enjoy reading!
