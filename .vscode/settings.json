@@ -6,11 +6,13 @@
         "**/*.md"
     ],
     "cSpell.words": [
+        "epub",
         "fgebhart",
         "fgebhart.dev",
         "fontawesome",
         "mkdocs",
         "Namecheap",
-        "tldr"
+        "tldr",
+        "Tolino"
     ],
 }
