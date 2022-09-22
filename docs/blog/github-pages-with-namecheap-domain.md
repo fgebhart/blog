@@ -13,6 +13,10 @@ tags:
 This post will guide you through the different steps needed to configure a custom [Namecheap](https://www.namecheap.com/)
 domain with your static website hosted on GitHub Pages.
 
+<figure markdown>
+  ![ZEIT Tolino Cover Picture](https://i.imgur.com/vecomx7.png){ width="500", loading=lazy }
+</figure>
+
 !!! Note
     This guide focuses on [Namecheap](https://www.namecheap.com/) as a domain name provider. The overall approach is
     likely similar to other domain name providers, however, the steps outlined below are specific to Namecheap and
@@ -47,18 +51,18 @@ Let's configure a custom domain for your GitHub Page.
 
 Head over to your [Namecheap Dashboard](https://ap.www.namecheap.com/) and hit the `MANAGE` button:
 
-![Namecheap Dashboard](images/github-pages-with-namecheap-domain/namecheap_dashboard_manage.jpg)
+![Namecheap Dashboard](https://i.imgur.com/zCE3uJD.jpg){ loading=lazy }
 
 On the `Domains → Details` page click the `Advanced DNS` tab:
 
-![Namecheap Dashboard](images/github-pages-with-namecheap-domain/namecheap_advanced_dns.png)
+![Namecheap Dashboard](https://i.imgur.com/75pYTsC.png){ loading=lazy }
 
 In the `Host Records` section, you need to add five entries. Four of them are of type `A Record` with Host being `@`
 pointing to the GitHub Pages IP addresses. The fifth record will be the actual `CNAME Record` pointing to your default
 GitHub Page domain. The below screenshot shows the values needed to map your new custom domain (`blog.fgebhart.dev`
 in this case) to the default GitHub Pages domain (`fgebhart.github.io/blog`) as given in the above [example](#example).
 
-![Namecheap Dashboard](images/github-pages-with-namecheap-domain/namecheap_record_list.png)
+![Namecheap Dashboard](https://i.imgur.com/xr4uE3i.png){ loading=lazy }
 
 Copy the values from this table and configure your host records accordingly.
 
@@ -108,7 +112,7 @@ or reading the [docs of mkdocs-material regarding publishing](https://squidfunk.
 Scroll down to the `Custom Domain` section and enter your custom domain into the input field. In the case of this blog
 `blog.fgebhart.dev` was entered:
 
-![GitHub Pages Custom Domain Settings](images/github-pages-with-namecheap-domain/github_pages_custom_domain.png)
+![GitHub Pages Custom Domain Settings](https://i.imgur.com/MGhhZCI.png){ loading=lazy }
 
 !!! Hint
     Again, if you prefer to use your apex domain, simply omit the subdomain and enter e.g. `fgebhart.dev` here.
