@@ -660,6 +660,9 @@
 <h1 id="how-to-use-a-custom-namecheap-domain-with-github-pages">How to Use a Custom Namecheap Domain with GitHub Pages?</h1>
 <p>This post will guide you through the different steps needed to configure a custom <a href="https://www.namecheap.com/">Namecheap</a>
 domain with your static website hosted on GitHub Pages.</p>
+<figure>
+<p><img _="," alt="ZEIT Tolino Cover Picture" loading="lazy" src="https://i.imgur.com/vecomx7.png" width="500" /></p>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This guide focuses on <a href="https://www.namecheap.com/">Namecheap</a> as a domain name provider. The overall approach is
@@ -689,14 +692,14 @@ domain for its corresponding GitHub Page would be <code>fgebhart.github.io/blog<
 </div>
 <h3 id="namecheap-configuration">Namecheap Configuration</h3>
 <p>Head over to your <a href="https://ap.www.namecheap.com/">Namecheap Dashboard</a> and hit the <code>MANAGE</code> button:</p>
-<p><img alt="Namecheap Dashboard" src="../images/github-pages-with-namecheap-domain/namecheap_dashboard_manage.jpg" /></p>
+<p><img alt="Namecheap Dashboard" loading="lazy" src="https://i.imgur.com/zCE3uJD.jpg" /></p>
 <p>On the <code>Domains → Details</code> page click the <code>Advanced DNS</code> tab:</p>
-<p><img alt="Namecheap Dashboard" src="../images/github-pages-with-namecheap-domain/namecheap_advanced_dns.png" /></p>
+<p><img alt="Namecheap Dashboard" loading="lazy" src="https://i.imgur.com/75pYTsC.png" /></p>
 <p>In the <code>Host Records</code> section, you need to add five entries. Four of them are of type <code>A Record</code> with Host being <code>@</code>
 pointing to the GitHub Pages IP addresses. The fifth record will be the actual <code>CNAME Record</code> pointing to your default
 GitHub Page domain. The below screenshot shows the values needed to map your new custom domain (<code>blog.fgebhart.dev</code>
 in this case) to the default GitHub Pages domain (<code>fgebhart.github.io/blog</code>) as given in the above <a href="#example">example</a>.</p>
-<p><img alt="Namecheap Dashboard" src="../images/github-pages-with-namecheap-domain/namecheap_record_list.png" /></p>
+<p><img alt="Namecheap Dashboard" loading="lazy" src="https://i.imgur.com/xr4uE3i.png" /></p>
 <p>Copy the values from this table and configure your host records accordingly.</p>
 <table>
 <thead>
@@ -768,7 +771,7 @@ check out the <a href="https://docs.github.com/en/pages/getting-started-with-git
 or reading the <a href="https://squidfunk.github.io/mkdocs-material/publishing-your-site/">docs of mkdocs-material regarding publishing</a>).</p>
 <p>Scroll down to the <code>Custom Domain</code> section and enter your custom domain into the input field. In the case of this blog
 <code>blog.fgebhart.dev</code> was entered:</p>
-<p><img alt="GitHub Pages Custom Domain Settings" src="../images/github-pages-with-namecheap-domain/github_pages_custom_domain.png" /></p>
+<p><img alt="GitHub Pages Custom Domain Settings" loading="lazy" src="https://i.imgur.com/MGhhZCI.png" /></p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Again, if you prefer to use your <abbr title="Apex domains are known as base, root or naked domains. It does not contain any subdomain, e.g. fgebhart.dev">apex domain</abbr>, simply omit the subdomain and enter e.g. <code>fgebhart.dev</code> here.</p>
