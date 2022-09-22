@@ -1,1 +1,3 @@
-order: desc
+nav:
+    - auto-sync-zeit-newspaper-to-your-tolino-cloud.md
+    - github-pages-with-namecheap-domain.md
