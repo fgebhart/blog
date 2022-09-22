@@ -18,11 +18,11 @@ newspaper and uploads it to your [Tolino cloud](webreader.mytolino.com/). This m
 Actions, so you don't have to worry about execution or deployment. The automatism is based on [Selenium](https://selenium-python.readthedocs.io/),
 which takes care of clicking the relevant browser buttons for you. 
 
-
 <figure markdown>
-  ![ZEIT Tolino Cover Picture](https://live.staticflickr.com/65535/52376054167_15aa6f4446_b.jpg){ width="500", loading=lazy }
-  <figcaption>Let's makes reading the newspaper on your Tolino even more fun!</figcaption>
+  ![ZEIT Tolino Cover Picture](https://i.imgur.com/l5OJSUv.jpg){ width="500", loading=lazy }
+  <figcaption>Let's make reading the newspaper on your Tolino even more fun!</figcaption>
 </figure>
+
 
 ## Motivation
 
@@ -115,8 +115,7 @@ on the `Run Workflow` button. This is potentially useful, after initially settin
 
 ![Workflow Dispatch](https://i.imgur.com/1WJOV5a.png){ loading=lazy }
 
-I hope you were able to successfully set up the auto-syncing. I'm happy to receive comments and feedback in the below
-comment section. 🐙
+I hope you were able to successfully set up the auto-syncing – happy to receive comments and feedback. 🐙
 
 -------------------------------------------------------------------------------------------------------------------------
 
