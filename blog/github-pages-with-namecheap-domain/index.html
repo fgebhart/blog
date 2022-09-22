@@ -6,18 +6,18 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Automatically Sync your ZEIT Newspaper to your Tolino Cloud using Selenium and GitHub Actions">
+        <meta name="description" content="Configure a custom domain obtained from Namecheap for your static website hosted on GitHub Pages">
       
       
       
-        <link rel="canonical" href="https://blog.fgebhart.dev/blog/2022-02_zeit-on-tolino/">
+        <link rel="canonical" href="https://blog.fgebhart.dev/blog/github-pages-with-namecheap-domain/">
       
       <link rel="icon" href="../../assets/octopus.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.0">
     
     
       
-        <title>Auto-sync ZEIT Newspaper to your Tolino Cloud - fgebhart/blog</title>
+        <title>GitHub Pages with Namecheap Domain - fgebhart/blog</title>
       
     
     
@@ -103,11 +103,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Auto-sync ZEIT Newspaper to your Tolino Cloud - fgebhart/blog" >
+        <meta  property="og:title"  content="GitHub Pages with Namecheap Domain - fgebhart/blog" >
       
-        <meta  property="og:description"  content="Automatically Sync your ZEIT Newspaper to your Tolino Cloud using Selenium and GitHub Actions" >
+        <meta  property="og:description"  content="Configure a custom domain obtained from Namecheap for your static website hosted on GitHub Pages" >
       
-        <meta  property="og:image"  content="https://blog.fgebhart.dev/assets/images/social/blog/2022-02_zeit-on-tolino.png" >
+        <meta  property="og:image"  content="https://blog.fgebhart.dev/assets/images/social/blog/github-pages-with-namecheap-domain.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -115,15 +115,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://blog.fgebhart.dev/blog/2022-02_zeit-on-tolino/" >
+        <meta  property="og:url"  content="https://blog.fgebhart.dev/blog/github-pages-with-namecheap-domain/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Auto-sync ZEIT Newspaper to your Tolino Cloud - fgebhart/blog" >
+        <meta  name="twitter:title"  content="GitHub Pages with Namecheap Domain - fgebhart/blog" >
       
-        <meta  name="twitter:description"  content="Automatically Sync your ZEIT Newspaper to your Tolino Cloud using Selenium and GitHub Actions" >
+        <meta  name="twitter:description"  content="Configure a custom domain obtained from Namecheap for your static website hosted on GitHub Pages" >
       
-        <meta  name="twitter:image"  content="https://blog.fgebhart.dev/assets/images/social/blog/2022-02_zeit-on-tolino.png" >
+        <meta  name="twitter:image"  content="https://blog.fgebhart.dev/assets/images/social/blog/github-pages-with-namecheap-domain.png" >
       
     
     
@@ -149,7 +149,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-to-automatically-sync-your-zeit-newspaper-to-your-tolino-cloud" class="md-skip">
+        <a href="#how-to-use-a-custom-namecheap-domain-with-github-pages" class="md-skip">
           Skip to content
         </a>
       
@@ -181,7 +181,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Auto-sync ZEIT Newspaper to your Tolino Cloud
+              GitHub Pages with Namecheap Domain
             
           </span>
         </div>
@@ -370,6 +370,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../auto-sync-zeit-newspaper-to-your-tolino-cloud/" class="md-nav__link">
+        Auto-sync ZEIT Newspaper to your Tolino Cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -382,12 +396,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Auto-sync ZEIT Newspaper to your Tolino Cloud
+          GitHub Pages with Namecheap Domain
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Auto-sync ZEIT Newspaper to your Tolino Cloud
+        GitHub Pages with Namecheap Domain
       </a>
       
         
@@ -413,6 +427,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#guide" class="md-nav__link">
     Guide
   </a>
@@ -421,29 +442,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fork-the-zeit-on-tolino-github-repository" class="md-nav__link">
-    Fork the zeit-on-tolino GitHub Repository
+  <a href="#namecheap-configuration" class="md-nav__link">
+    Namecheap Configuration
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#allow-github-actions-to-run" class="md-nav__link">
-    Allow GitHub Actions to Run
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#add-tolino-and-zeit-credentials-to-github-repo-secrets" class="md-nav__link">
-    Add Tolino and ZEIT Credentials to GitHub Repo Secrets
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#execution-of-the-periodic-github-actions-sync-workflow" class="md-nav__link">
-    Execution of the Periodic GitHub Actions Sync Workflow
+  <a href="#github-pages-configuration" class="md-nav__link">
+    GitHub Pages Configuration
   </a>
   
 </li>
@@ -458,26 +465,39 @@
     Troubleshooting
   </a>
   
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#my-website-is-not-accessible-via-the-custom-domain" class="md-nav__link">
+    My Website is not Accessible via the Custom Domain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#each-commit-to-my-repo-seems-to-break-the-configured-domain-routing" class="md-nav__link">
+    Each Commit to my Repo seems to break the configured Domain Routing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-links" class="md-nav__link">
+    External Links
+  </a>
+  
 </li>
       
     </ul>
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2022-01_github-pages-namecheap/" class="md-nav__link">
-        GitHub Pages with Namecheap Domain
-      </a>
     </li>
   
 
@@ -523,6 +543,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#guide" class="md-nav__link">
     Guide
   </a>
@@ -531,29 +558,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fork-the-zeit-on-tolino-github-repository" class="md-nav__link">
-    Fork the zeit-on-tolino GitHub Repository
+  <a href="#namecheap-configuration" class="md-nav__link">
+    Namecheap Configuration
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#allow-github-actions-to-run" class="md-nav__link">
-    Allow GitHub Actions to Run
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#add-tolino-and-zeit-credentials-to-github-repo-secrets" class="md-nav__link">
-    Add Tolino and ZEIT Credentials to GitHub Repo Secrets
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#execution-of-the-periodic-github-actions-sync-workflow" class="md-nav__link">
-    Execution of the Periodic GitHub Actions Sync Workflow
+  <a href="#github-pages-configuration" class="md-nav__link">
+    GitHub Pages Configuration
   </a>
   
 </li>
@@ -566,6 +579,33 @@
         <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     Troubleshooting
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#my-website-is-not-accessible-via-the-custom-domain" class="md-nav__link">
+    My Website is not Accessible via the Custom Domain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#each-commit-to-my-repo-seems-to-break-the-configured-domain-routing" class="md-nav__link">
+    Each Commit to my Repo seems to break the configured Domain Routing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-links" class="md-nav__link">
+    External Links
   </a>
   
 </li>
@@ -589,12 +629,12 @@
     
       
       
-        <a href="../../tags/#ebook" class="md-tag">ebook</a>
+        <a href="../../tags/#dns" class="md-tag">dns</a>
       
     
       
       
-        <a href="../../tags/#github-actions" class="md-tag">github actions</a>
+        <a href="../../tags/#github-pages" class="md-tag">github pages</a>
       
     
       
@@ -604,133 +644,163 @@
     
       
       
-        <a href="../../tags/#newspaper" class="md-tag">newspaper</a>
-      
-    
-      
-      
-        <a href="../../tags/#python" class="md-tag">python</a>
-      
-    
-      
-      
-        <a href="../../tags/#selenium" class="md-tag">selenium</a>
+        <a href="../../tags/#namecheap" class="md-tag">namecheap</a>
       
     
   </nav>
 
 
 
-  <a href="https://github.com/fgebhart/blog/edit/main/docs/blog/2022-02_zeit-on-tolino.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/fgebhart/blog/edit/main/docs/blog/github-pages-with-namecheap-domain.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="how-to-automatically-sync-your-zeit-newspaper-to-your-tolino-cloud">How to automatically sync your ZEIT Newspaper to your Tolino Cloud?</h1>
-<p>This guide will outline the steps needed to set up a scheduled syncing mechanism that downloads the <a href="https://premium.zeit.de/">ZEIT</a>
-newspaper and uploads it to your <a href="webreader.mytolino.com/">Tolino cloud</a>. This mechanism will run once per week on GitHub
-Actions, so you don't have to worry about execution or deployment. The automatism is based on <a href="https://selenium-python.readthedocs.io/">Selenium</a>,
-which takes care of clicking the relevant browser buttons for you. </p>
+<h1 id="how-to-use-a-custom-namecheap-domain-with-github-pages">How to Use a Custom Namecheap Domain with GitHub Pages?</h1>
+<p>This post will guide you through the different steps needed to configure a custom <a href="https://www.namecheap.com/">Namecheap</a>
+domain with your static website hosted on GitHub Pages.</p>
 <figure>
-<p><img _="," alt="ZEIT Tolino Cover Picture" loading="lazy" src="https://i.imgur.com/l5OJSUv.jpg" width="500" />
-  </p>
-<figcaption>Let's make reading the newspaper on your Tolino even more fun!</figcaption>
+<p><img _="," alt="ZEIT Tolino Cover Picture" loading="lazy" src="https://i.imgur.com/vecomx7.png" width="500" /></p>
 </figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This guide focuses on <a href="https://www.namecheap.com/">Namecheap</a> as a domain name provider. The overall approach is
+likely similar to other domain name providers, however, the steps outlined below are specific to Namecheap and
+cannot be applied to other domain name providers directly.</p>
+</div>
 <h2 id="motivation">Motivation</h2>
-<p>Reading the newspaper on an e-book reader device has many advantages. First, the device is small and can be used almost
-everywhere, while the printed edition usually comes in a not-so-small format. Second, depending on the version of your
-device, it might come with inbuilt background light, which allows for reading in gloomy areas. Third, in the case of
-<a href="https://premium.zeit.de/">ZEIT</a>, the digital <a href="https://en.wikipedia.org/wiki/EPUB"><code>epub</code></a> edition does not even contain
-any advertisement at all (by the time of writing - let's hope it stays like this). And fourth, having a newspaper in a
-digital format enables searching through the document very easily.</p>
-<p>While e-book readers became more convenient over the past few years, using them for reading the newspaper is still not
-very common. One huge disadvantage is the missing integration of publishers with the ebook reader cloud providers. Taking
-care of manually uploading the newspaper to the Tolino cloud is cumbersome and probably leads to the fact of reading
-less. While this seems <a href="https://premium.zeit.de/faq/e-reader#Kindle-automatischer-Versand">automated for the Amazon Kindle</a>,
-there is <a href="https://premium.zeit.de/faq/e-reader#EPUB-Uebertragen">no automatism for Tolino devices in place</a>. This guide
-will bridge this gap.</p>
+<p>Sometimes you want your GitHub Page to be reachable via a custom domain to provide a catchy name or to put it next to
+your existing website by using a subdomain. Note, that there are a <a href="#external-links">bunch of resources on this topic out there</a>
+already, but it seemed like none of them puts all the required pieces into a single place, thus I came up with this
+guide.</p>
+<h2 id="example">Example</h2>
+<p>Consider the following example: The GitHub repo of this blog is located at <code>github.com/fgebhart/blog</code> and the default
+domain for its corresponding GitHub Page would be <code>fgebhart.github.io/blog</code>. Now as you can see, I obtained the domain
+<code>fgebhart.dev</code> from Namecheap and used the subdomain <code>blog.fgebhart.dev</code> as the custom domain for this blog.</p>
 <h2 id="guide">Guide</h2>
-<p>This guide will explain the usage of <a href="https://github.com/fgebhart/zeit-on-tolino">zeit-on-tolino</a>, a little application I
-built recently. The app is based on <a href="https://github.com/features/actions">GitHub Actions</a> and <a href="https://selenium-python.readthedocs.io/">Selenium</a>.
-It requires a few manual steps to set up the syncing mechanism. Once configured, it will run in a <a href="https://en.wikipedia.org/wiki/Cron">cron</a>-based
-fashion to download your <code>epub</code> newspaper and subsequently upload it to your Tolino cloud every Wednesday evening (after
-the release was published).</p>
+<p>Let's configure a custom domain for your GitHub Page.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>This guide assumes the following <strong>prerequisites</strong> to be fulfilled:</p>
 <ol>
-<li>You are able to log in at <a href="https://premium.zeit.de/">premium.zeit.de</a> and download the <code>epub</code> edition of the ZEIT
-   newspaper.</li>
-<li>You do own a <a href="https://mytolino.com/">Tolino e-book reader device</a> and have access to the <a href="https://webreader.mytolino.com/">Tolino cloud</a>.</li>
+<li>You have a GitHub repository set up and its corresponding static GitHub Page is published at the default domain 
+  name (i.e. <code>&lt;user&gt;.github.io/&lt;repo&gt;</code>)</li>
+<li>You bought a domain on <a href="https://www.namecheap.com/">Namecheap</a> and can configure it via the
+  <a href="https://ap.www.namecheap.com/">Namecheap Dashboard</a></li>
 </ol>
 </div>
-<h3 id="fork-the-zeit-on-tolino-github-repository">Fork the <code>zeit-on-tolino</code> GitHub Repository</h3>
-<p>Go to the <a href="https://github.com/fgebhart/zeit-on-tolino">zeit-on-tolino</a> repo and hit the fork button (or follow
-<a href="https://github.com/fgebhart/zeit-on-tolino/fork">this link</a>).</p>
-<p><img alt="Fork GitHub Repo" loading="lazy" src="https://i.imgur.com/PkTTMbV.png" /></p>
-<p>On the upcoming <code>Create a new fork</code> page, fill the form with values of your choice and hit the <code>Create Fork</code> button.</p>
-<h3 id="allow-github-actions-to-run">Allow GitHub Actions to Run</h3>
-<p>Once the forking was successful, navigate to the GitHub Actions settings page (Settings → Actions → General) of your repo
-and allow all actions and reusable workflows. This step is required to allow the execution of GitHub Actions from the
-upstream <code>zeit-on-tolino</code> repo in your forked repo.</p>
-<p><img alt="Allow GitHub Actions" loading="lazy" src="https://i.imgur.com/llKDjso.png" /></p>
-<h3 id="add-tolino-and-zeit-credentials-to-github-repo-secrets">Add Tolino and ZEIT Credentials to GitHub Repo Secrets</h3>
-<p>For the application to down- and upload the <code>epub</code> file, your login credentials for both Tolino cloud and ZEIT are
-needed. This step shows how to add them to your repository secrets. Note, that <a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets">repository secrets</a>
-are kept secret and can only be accessed by the repository owner and within the GitHub Actions workflows.</p>
-<p>Navigate to the Actions Secrets page of your repo (Settings → Secrets → Actions) and add a new secret by clicking on the
-<code>New repository secret</code> button:</p>
-<p><img alt="Add Repo Secret" loading="lazy" src="https://i.imgur.com/ue6hM3r.png" /></p>
-<p>The following secrets are required:</p>
+<h3 id="namecheap-configuration">Namecheap Configuration</h3>
+<p>Head over to your <a href="https://ap.www.namecheap.com/">Namecheap Dashboard</a> and hit the <code>MANAGE</code> button:</p>
+<p><img alt="Namecheap Dashboard" loading="lazy" src="https://i.imgur.com/zCE3uJD.jpg" /></p>
+<p>On the <code>Domains → Details</code> page click the <code>Advanced DNS</code> tab:</p>
+<p><img alt="Namecheap Dashboard" loading="lazy" src="https://i.imgur.com/75pYTsC.png" /></p>
+<p>In the <code>Host Records</code> section, you need to add five entries. Four of them are of type <code>A Record</code> with Host being <code>@</code>
+pointing to the GitHub Pages IP addresses. The fifth record will be the actual <code>CNAME Record</code> pointing to your default
+GitHub Page domain. The below screenshot shows the values needed to map your new custom domain (<code>blog.fgebhart.dev</code>
+in this case) to the default GitHub Pages domain (<code>fgebhart.github.io/blog</code>) as given in the above <a href="#example">example</a>.</p>
+<p><img alt="Namecheap Dashboard" loading="lazy" src="https://i.imgur.com/xr4uE3i.png" /></p>
+<p>Copy the values from this table and configure your host records accordingly.</p>
 <table>
 <thead>
 <tr>
-<th>Secret Name</th>
-<th>Description</th>
+<th>Type</th>
+<th>Host</th>
+<th>Value</th>
+<th>TTL</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>TOLINO_PARTNER_SHOP</code></td>
-<td>The name of the Tolino partner shop, e.g. <code>thalia</code> (see <a href="https://github.com/fgebhart/zeit-on-tolino#which-tolino-partner-shops-are-supported">supported shops</a>)</td>
+<td>A Record</td>
+<td>@</td>
+<td>185.199.108.153</td>
+<td>Automatic</td>
 </tr>
 <tr>
-<td><code>TOLINO_USER</code></td>
-<td>The username (usually an email address) you use for logging into the Tolino cloud</td>
+<td>A Record</td>
+<td>@</td>
+<td>185.199.109.153</td>
+<td>Automatic</td>
 </tr>
 <tr>
-<td><code>TOLINO_PASSWORD</code></td>
-<td>The associated password</td>
+<td>A Record</td>
+<td>@</td>
+<td>185.199.110.153</td>
+<td>Automatic</td>
 </tr>
 <tr>
-<td><code>ZEIT_PREMIUM_USER</code></td>
-<td>Your ZEIT premium username</td>
+<td>A Record</td>
+<td>@</td>
+<td>185.199.111.153</td>
+<td>Automatic</td>
 </tr>
 <tr>
-<td><code>ZEIT_PREMIUM_PASSWORD</code></td>
-<td>The associated password</td>
+<td><abbr title="&quot;Canonical Name&quot; - DNS record type to point the name of your website to your A record">CNAME</abbr> Record</td>
+<td>blog</td>
+<td>fgebhart.github.io</td>
+<td>Automatic</td>
 </tr>
 </tbody>
 </table>
-<p>Once you are done entering the five required secrets, they are ready to be used within the GitHub Action workflow. Your
-list of repo secrets should now look like this:</p>
-<p><img alt="Repo Secrets List" loading="lazy" src="https://i.imgur.com/K29SEkH.png" /></p>
-<h3 id="execution-of-the-periodic-github-actions-sync-workflow">Execution of the Periodic GitHub Actions Sync Workflow</h3>
-<p>Everything should be in place by now and the sync mechanism should be triggered every Wednesday evening. To inspect the
-exact time the workflow is scheduled to be executed, have a look at <a href="https://github.com/fgebhart/zeit-on-tolino/blob/main/.github/workflows/sync_to_tolino_cloud.yml#L5-L7">the configuration file of the workflow</a>.</p>
-<p>To check whether the workflow is executed in your repo, navigate to the <code>Periodic Sync</code> workflow in the <code>Actions</code> tab
-(Actions → Workflows → Periodic Sync). Note, that the Periodic Sync workflow offers to be triggered manually, by clicking
-on the <code>Run Workflow</code> button. This is potentially useful, after initially setting up the project.</p>
-<p><img alt="Workflow Dispatch" loading="lazy" src="https://i.imgur.com/1WJOV5a.png" /></p>
-<p>I hope you were able to successfully set up the auto-syncing – happy to receive comments and feedback. 🐙</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Both <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages#supported-custom-domains">subdomains and apex domains are supported</a>
+with GitHub Pages. If you prefer to use the <abbr title="Apex domains are known as base, root or naked domains. It does not contain any subdomain, e.g. fgebhart.dev">apex domain</abbr> instead of the subdomain you have to enter <code>www</code> instead of
+<code>blog</code> in the <code>Host</code> column since <a href="https://stackoverflow.com/questions/20680521/is-www-a-subdomain"><code>www</code> is just a usual subdomain</a>
+from <abbr title="Domain Name System">DNS</abbr> perspective.</p>
+</div>
+<p>It usually takes a while until this configuration becomes active. After waiting for one hour verify your <abbr title="Domain Name System">DNS</abbr> settings to
+be active by running the following command (replace <code>blog.fgebhart.dev</code> with your domain of course):</p>
+<p><div class="highlight"><pre><span></span><code>dig +noall +answer +nocmd blog.fgebhart.dev
+</code></pre></div>
+Your output should look similar to this one:</p>
+<div class="highlight"><pre><span></span><code>blog.fgebhart.dev.  1799    IN  CNAME   fgebhart.github.io.
+fgebhart.github.io. 3600    IN  A   185.199.110.153
+fgebhart.github.io. 3600    IN  A   185.199.111.153
+fgebhart.github.io. 3600    IN  A   185.199.108.153
+fgebhart.github.io. 3600    IN  A   185.199.109.153
+</code></pre></div>
+<p>If you get the expected output, your Namecheap configuration is in place and we can proceed with the configuration of
+GitHub.</p>
+<h3 id="github-pages-configuration">GitHub Pages Configuration</h3>
+<p>Go to your GitHub repository and navigate to the GitHub Pages settings. For this blog the URL is <a href="https://github.com/fgebhart/blog/settings/pages">https://github.com/fgebhart/blog/settings/pages</a>.
+Given the above-mentioned prerequisites, your static website should already be deployed to GitHub Pages and accessible
+via the default <code>github.io</code> URL (if you still need to set up the deployment, I'd suggest having a look at the <a href="https://github.com/fgebhart/blog/blob/main/.github/workflows/publish.yml">GitHub Actions Workflow of this blog</a>,
+check out the <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">GitHub docs on publishing your website</a>
+or reading the <a href="https://squidfunk.github.io/mkdocs-material/publishing-your-site/">docs of mkdocs-material regarding publishing</a>).</p>
+<p>Scroll down to the <code>Custom Domain</code> section and enter your custom domain into the input field. In the case of this blog
+<code>blog.fgebhart.dev</code> was entered:</p>
+<p><img alt="GitHub Pages Custom Domain Settings" loading="lazy" src="https://i.imgur.com/MGhhZCI.png" /></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Again, if you prefer to use your <abbr title="Apex domains are known as base, root or naked domains. It does not contain any subdomain, e.g. fgebhart.dev">apex domain</abbr>, simply omit the subdomain and enter e.g. <code>fgebhart.dev</code> here.</p>
+</div>
+<p>In case your Namecheap configuration was successful as described above, the GitHub <abbr title="Domain Name System">DNS</abbr> check should pass and you should
+be able to hit the <code>Save</code> button. It is also strongly recommended to enable HTTPS for your custom domain by checking the
+<code>Enforce HTTPS</code> box.</p>
+<p>After a moment your static website should be accessible via your new domain. 🐙</p>
 <hr />
 <h2 id="troubleshooting">Troubleshooting</h2>
-<p>In case some of the above steps do not work as expected, I'd suggest using the comment section of this blog post for
-discussions.</p>
-<p>For frequently asked questions check out the <a href="https://github.com/fgebhart/zeit-on-tolino#faq">FAQ section of <code>zeit-on-tolino</code></a>.</p>
-<p>If you happen to have issues with your workflow run, feel free to <a href="https://github.com/fgebhart/zeit-on-tolino/issues/new">open an issue</a>
-for further investigation.</p>
+<h3 id="my-website-is-not-accessible-via-the-custom-domain">My Website is not Accessible via the Custom Domain</h3>
+<p>Patience. Updating and propagating new <abbr title="Domain Name System">DNS</abbr> records can take quite some time. This makes iterating a tedious task, but
+using the above-mentioned <code>dig</code> command helps verify that things are set up as intended.</p>
+<h3 id="each-commit-to-my-repo-seems-to-break-the-configured-domain-routing">Each Commit to my Repo seems to break the configured Domain Routing</h3>
+<p>In case a push/commit to your repo containing the source code of your static website seems to break the <abbr title="Domain Name System">DNS</abbr>
+configuration, you might need to add a <abbr title="&quot;Canonical Name&quot; - DNS record type to point the name of your website to your A record">CNAME</abbr> file to your repo. Usually, configuring the custom domain on the GitHub
+Pages settings tab will add a <abbr title="&quot;Canonical Name&quot; - DNS record type to point the name of your website to your A record">CNAME</abbr> file to the branch from which your static page will be deployed. However, a GitHub
+Action could be implemented in such a way, that it would overwrite the <abbr title="&quot;Canonical Name&quot; - DNS record type to point the name of your website to your A record">CNAME</abbr> file with every commit. If this is the
+case, you would need to add the file manually to your repo. To do so, have a look at the deploy branch of your repo
+(usually <code>gh-pages</code>) to conclude which folder of your source code branch will be deployed from the deploy branch. In the
+root of this folder, you have to add a file called <code>CNAME</code> (all uppercase). The content of the file must contain a single
+line only, which is the custom URL to point to your GitHub Page. In the case of this blog, <a href="https://github.com/fgebhart/blog/blob/main/docs/CNAME">here is the <abbr title="&quot;Canonical Name&quot; - DNS record type to point the name of your website to your A record">CNAME</abbr> file</a>
+which contains <code>blog.fgebhart.dev</code>. For more details have a look at the <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages#cname-errors">GitHub Troubleshooting docs</a>.</p>
+<h2 id="external-links">External Links</h2>
+<ul>
+<li><a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">GitHub docs on managing custom domains with GitHub Pages</a> (Visited 2022-09-18)</li>
+<li><a href="https://www.namecheap.com/support/knowledgebase/article.aspx/9645/2208/how-do-i-link-my-domain-to-github-pages/">Namecheap Knowledgebase on linking your domain to GitHub Pages</a> (Visited 2022-09-18)</li>
+<li><a href="https://www.namecheap.com/guru-guides/dns-records/">Namecheap guide on the different <abbr title="Domain Name System">DNS</abbr> types</a> (Visited 2022-09-19)</li>
+</ul>
 
   <hr>
 <div class="md-source-file">
@@ -741,7 +811,7 @@ for further investigation.</p>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 22, 2022</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 19, 2022</span>
       
     
   </small>
@@ -820,7 +890,7 @@ for further investigation.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../../tags/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tags" rel="prev">
+        <a href="../auto-sync-zeit-newspaper-to-your-tolino-cloud/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Auto-sync ZEIT Newspaper to your Tolino Cloud" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -829,26 +899,11 @@ for further investigation.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Tags
+              Auto-sync ZEIT Newspaper to your Tolino Cloud
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../2022-01_github-pages-namecheap/" class="md-footer__link md-footer__link--next" aria-label="Next: GitHub Pages with Namecheap Domain" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              GitHub Pages with Namecheap Domain
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
