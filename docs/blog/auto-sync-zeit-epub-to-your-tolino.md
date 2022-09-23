@@ -1,5 +1,5 @@
 ---
-title: Auto-sync ZEIT Newspaper to your Tolino Cloud
+title: Auto-sync ZEIT Epub to your Tolino
 description: Automatically Sync your ZEIT Newspaper to your Tolino Cloud using Selenium and GitHub Actions
 comments: true
 tags:
