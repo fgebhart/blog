@@ -45,6 +45,7 @@ theme:
     - navigation.sections   # Disable sections once blog posts number increases
     - navigation.top
     - header.autohide
+    - announce.dismiss
 
 plugins:
   - search
