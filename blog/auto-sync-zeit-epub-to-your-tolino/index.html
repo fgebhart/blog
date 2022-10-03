@@ -697,6 +697,15 @@ the release was published).</p>
 and allow all actions and reusable workflows. This step is required to allow the execution of GitHub Actions from the
 upstream <code>zeit-on-tolino</code> repo in your forked repo.</p>
 <p><img alt="Allow GitHub Actions" loading="lazy" src="https://i.imgur.com/llKDjso.png" /></p>
+<p>Now head over to the GitHub Actions tab and enable the workflows to be executed for your forked repo. GitHub has a few
+security measures in place which disable workflows on forked repos per default. You will be prompted the following 
+warnings:</p>
+<p>Feel free to take your time to read through the workflows before approving.</p>
+<p><img alt="Enable GitHub Workflows 1" loading="lazy" src="https://i.imgur.com/V4JE7XY.png" /></p>
+<p>And also explicitly enable the <code>Periodic Sync</code> workflow by hitting the <code>Enable Workflow</code> button:</p>
+<p><img alt="Enable GitHub Workflows 2" loading="lazy" src="https://i.imgur.com/Pd7U2bn.png" /></p>
+<p>Before executing the workflow for the first time, ensure to add your credentials to the repo. Otherwise, the workflow
+will fail.</p>
 <h3 id="add-tolino-and-zeit-credentials-to-github-repo-secrets">Add Tolino and ZEIT Credentials to GitHub Repo Secrets</h3>
 <p>For the application to down- and upload the <code>epub</code> file, your login credentials for both Tolino cloud and ZEIT are
 needed. This step shows how to add them to your repository secrets. Note, that <a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets">repository secrets</a>
@@ -759,7 +768,7 @@ for further investigation.</p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 23, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 3, 2022</span>
       
         <br>
         Created:
