@@ -76,6 +76,21 @@ upstream `zeit-on-tolino` repo in your forked repo.
 
 ![Allow GitHub Actions](https://i.imgur.com/llKDjso.png){ loading=lazy }
 
+Now head over to the GitHub Actions tab and enable the workflows to be executed for your forked repo. GitHub has a few
+security measures in place which disable workflows on forked repos per default. You will be prompted the following 
+warnings:
+
+Feel free to take your time to read through the workflows before approving.
+
+![Enable GitHub Workflows 1](https://i.imgur.com/V4JE7XY.png){ loading=lazy }
+
+And also explicitly enable the `Periodic Sync` workflow by hitting the `Enable Workflow` button:
+
+![Enable GitHub Workflows 2](https://i.imgur.com/Pd7U2bn.png){ loading=lazy }
+
+Before executing the workflow for the first time, ensure to add your credentials to the repo. Otherwise, the workflow
+will fail.
+
 
 ### Add Tolino and ZEIT Credentials to GitHub Repo Secrets
 
