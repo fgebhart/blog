@@ -87,5 +87,8 @@ extra:
     - icon: fontawesome/brands/linkedin 
       link: https://www.linkedin.com/in/fabian-gebhart/
       name: My linkedin
+    - icon: fontawesome/brands/mastodon 
+      link: https://fosstodon.org/@fgebhart
+      name: My mastodon
 
 copyright: Copyright &copy; 2022 Fabian Gebhart
