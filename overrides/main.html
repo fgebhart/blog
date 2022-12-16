@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
 {% block announce %}
-    <a href="https://fosstodon.org/@fgebhart" rel="me">
+    <a href="https://fosstodon.org/@fgebhart">
         For updates follow <strong>@fgebhart@fosstodon.org </strong> on
         <span class="twemoji">
             {% include ".icons/fontawesome/brands/mastodon.svg" %}
         </span>
         <strong>Mastodon</strong>
     </a>
+{% endblock %}
+
+{% block extrahead %}
+    <link href="https://fosstodon.org/@fgebhart" rel="me" />
 {% endblock %}
