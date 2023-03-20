@@ -22,6 +22,11 @@ poetry shell
 mkdocs serve
 ```
 
+Go to http://localhost:8000/
+
+Note, images from imgur will not be loaded from the local server when
+using `127.0.0.1:8000/` ensure to use `http://localhost:8000/` instead.
+
 Note, if you want the social cards to be generated locally, you need to set the following environment variable:
 ```
 export CARDS=true
