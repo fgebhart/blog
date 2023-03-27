@@ -2,27 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://blog.fgebhart.dev/</loc>
-         <lastmod>2023-03-24</lastmod>
+         <lastmod>2023-03-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.fgebhart.dev/tags/</loc>
-         <lastmod>2023-03-24</lastmod>
+         <lastmod>2023-03-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://blog.fgebhart.dev/blog/3d-print-topological-maps/</loc>
+         <lastmod>2023-03-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.fgebhart.dev/blog/auto-sync-zeit-epub-to-your-tolino/</loc>
-         <lastmod>2023-03-24</lastmod>
+         <lastmod>2023-03-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.fgebhart.dev/blog/github-pages-with-namecheap-domain/</loc>
-         <lastmod>2023-03-24</lastmod>
+         <lastmod>2023-03-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.fgebhart.dev/tags/</loc>
-         <lastmod>2023-03-24</lastmod>
+         <lastmod>2023-03-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

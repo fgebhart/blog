@@ -1,0 +1,1057 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Easily generate a STL file for 3D printing from any Place in the World!" name="description"/>
+<link href="https://blog.fgebhart.dev/blog/3d-print-topological-maps/" rel="canonical"/>
+<link href="../../assets/octopus.png" rel="icon"/>
+<meta content="mkdocs-1.3.1, mkdocs-material-8.5.0" name="generator"/>
+<title>3D-print Topological Maps - fgebhart/blog</title>
+<link href="../../assets/stylesheets/main.2e8b5541.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h226.7c17 0 33.3-6.7 45.3-18.7l93.3-93.3c12-12 18.7-28.3 18.7-45.3V96c0-35.3-28.7-64-64-64H64zm0 64h320v224h-64c-17.7 0-32 14.3-32 32v64H64V96z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96zm0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0 0 114.6 0 256s114.6 256 256 256zm-40-176h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M480 32c0-12.9-7.8-24.6-19.8-29.6S434.5.2 425.3 9.3L381.7 53c-48 48-113.1 75-181 75H64c-35.3 0-64 28.7-64 64v96c0 35.3 28.7 64 64 64v128c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V352h8.7c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V300.4c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4V32zm-64 76.7v262.6C357.2 317.8 280.5 288 200.7 288H192v-96h8.7c79.8 0 156.5-29.8 215.3-83.3z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7l233.4-233.3c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0 0 114.6 0 256s114.6 256 256 256zm-86.2-346.7c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1 0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6-13.3 0-24-10.7-24-24v-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1 0-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM288 352c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224c0-17.7-14.3-32-32-32s-32 14.3-32 32 14.3 32 32 32 32-14.3 32-32z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.1 52.4 442.6 6.5c-1.9-3.9-6.1-6.5-10.5-6.5s-8.5 2.6-10.4 6.5l-16.5 45.9-46 16.8c-4.3 1.6-7.3 5.9-7.2 10.4 0 4.5 3 8.7 7.2 10.2l45.7 16.8 16.8 45.8c1.5 4.4 5.8 7.5 10.4 7.5s8.9-3.1 10.4-7.5l16.5-45.8 45.7-16.8c4.2-1.5 7.2-5.7 7.2-10.2 0-4.6-3-8.9-7.2-10.4l-45.6-16.8zm-132.4 53c-12.5-12.5-32.8-12.5-45.3 0l-2.9 2.9c-22-8-45.8-12.3-70.5-12.3C93.1 96 0 189.1 0 304s93.1 208 208 208 208-93.1 208-208c0-24.7-4.3-48.5-12.2-70.5l2.9-2.9c12.5-12.5 12.5-32.8 0-45.3l-80-80zM200 192c-57.4 0-104 46.6-104 104v8c0 8.8-7.2 16-16 16s-16-7.2-16-16v-8c0-75.1 60.9-136 136-136h8c8.8 0 16 7.2 16 16s-7.2 16-16 16h-8z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 398.9c58.5-41.1 96-104.1 96-174.9C512 100.3 397.4 0 256 0S0 100.3 0 224c0 70.7 37.5 133.8 96 174.9V464c0 26.5 21.5 48 48 48h48v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h64v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h48c26.5 0 48-21.5 48-48v-65.1zM224 256c0 35.3-28.7 64-64 64s-64-28.7-64-64 28.7-64 64-64 64 28.7 64 64zm128 64c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7 64-64 64z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32v64h128c35.3 0 64 28.7 64 64v288c0 35.3-28.7 64-64 64H160c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h128V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zM264 256c0-22.1-17.9-40-40-40s-40 17.9-40 40 17.9 40 40 40 40-17.9 40-40zm152 40c22.1 0 40-17.9 40-40s-17.9-40-40-40-40 17.9-40 40 17.9 40 40 40zM48 224h16v192H48c-26.5 0-48-21.5-48-48v-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-16V224h16z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v132.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6 0 480.9 31.1 512 69.4 512h309.2c38.3 0 69.4-31.1 69.4-69.4 0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0h-32zm-96 196.8V64h64v132.8c0 23.7 6.6 46.9 19 67.1l34.5 56.1h-171l34.5-56.1c12.4-20.2 19-43.4 19-67.1z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216z"/></svg>');}</style>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Ubuntu";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-QDM5VJQE7E"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-QDM5VJQE7E",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-QDM5VJQE7E",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+<script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="3D-print Topological Maps - fgebhart/blog" property="og:title"/>
+<meta content="Easily generate a STL file for 3D printing from any Place in the World!" property="og:description"/>
+<meta content="https://blog.fgebhart.dev/assets/images/social/blog/3d-print-topological-maps.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://blog.fgebhart.dev/blog/3d-print-topological-maps/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="3D-print Topological Maps - fgebhart/blog" name="twitter:title"/>
+<meta content="Easily generate a STL file for 3D printing from any Place in the World!" name="twitter:description"/>
+<meta content="https://blog.fgebhart.dev/assets/images/social/blog/3d-print-topological-maps.png" name="twitter:image"/>
+<link href="https://fosstodon.org/@fgebhart" rel="me">
+</link><link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#how-to-easily-generate-and-3d-print-topological-maps">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+<aside class="md-banner">
+<div class="md-banner__inner md-grid md-typeset">
+<button aria-label="Don't show this again" class="md-banner__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+            
+            
+    For updates follow me on
+    <a href="https://twitter.com/FabianGebhart">
+<span class="twemoji">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+</span>
+<strong>Twitter</strong>
+</a>
+    or
+    <a href="https://fosstodon.org/@fgebhart">
+<span class="twemoji">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"></path></svg>
+</span>
+<strong>Mastodon</strong>
+</a>
+</div>
+<script>var content,el=document.querySelector("[data-md-component=announce]");el&&(content=el.querySelector(".md-typeset"),__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0))</script>
+</aside>
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="fgebhart/blog" class="md-header__button md-logo" data-md-component="logo" href="../.." title="fgebhart/blog">
+<img alt="logo" src="../../assets/octopus.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            fgebhart/blog
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              3D-print Topological Maps
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="" data-md-color-media="" data-md-color-primary="teal" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="" data-md-color-primary="blue-grey" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/fgebhart/blog" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    fgebhart/blog
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="fgebhart/blog" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="fgebhart/blog">
+<img alt="logo" src="../../assets/octopus.png"/>
+</a>
+    fgebhart/blog
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/fgebhart/blog" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    fgebhart/blog
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        Welcome
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tags/">
+        Tags
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Blog
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          3D-print Topological Maps
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        3D-print Topological Maps
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generating-stl-files-using-the-mapa-streamlit-app">
+    Generating STL Files using the mapa Streamlit App
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#customizations">
+    Customizations
+  </a>
+<nav aria-label="Customizations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adding-text">
+    Adding Text
+  </a>
+<nav aria-label="Adding Text" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-and-position-the-text-object">
+    Create and position the Text Object
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#solidify-the-text-object">
+    Solidify the Text Object
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#subtract-the-text-object-from-the-map">
+    Subtract the Text Object from the Map
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adding-magnet-slots">
+    Adding Magnet Slots
+  </a>
+<nav aria-label="Adding Magnet Slots" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
+    Requirements
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-and-position-a-cylinder">
+    Create and position a Cylinder
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiply-the-cylinder">
+    Multiply the Cylinder
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#subtract-the-cylinders-from-the-map">
+    Subtract the Cylinders from the Map
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exporting-the-3d-map">
+    Exporting the 3D Map
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preparation-for-3d-printing">
+    Preparation for 3D-Printing
+  </a>
+<nav aria-label="Preparation for 3D-Printing" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slicing">
+    Slicing
+  </a>
+<nav aria-label="Slicing" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-variable-layer-height">
+    Using variable Layer Height
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inserting-a-pause">
+    Inserting a Pause
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#printing">
+    Printing
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dont-feel-like-building-it-yourself">
+    Don't feel like building it yourself?
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../auto-sync-zeit-epub-to-your-tolino/">
+        Auto-sync ZEIT Epub to your Tolino
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../github-pages-with-namecheap-domain/">
+        GitHub Pages with Namecheap Domain
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generating-stl-files-using-the-mapa-streamlit-app">
+    Generating STL Files using the mapa Streamlit App
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#customizations">
+    Customizations
+  </a>
+<nav aria-label="Customizations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adding-text">
+    Adding Text
+  </a>
+<nav aria-label="Adding Text" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-and-position-the-text-object">
+    Create and position the Text Object
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#solidify-the-text-object">
+    Solidify the Text Object
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#subtract-the-text-object-from-the-map">
+    Subtract the Text Object from the Map
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adding-magnet-slots">
+    Adding Magnet Slots
+  </a>
+<nav aria-label="Adding Magnet Slots" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
+    Requirements
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-and-position-a-cylinder">
+    Create and position a Cylinder
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiply-the-cylinder">
+    Multiply the Cylinder
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#subtract-the-cylinders-from-the-map">
+    Subtract the Cylinders from the Map
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exporting-the-3d-map">
+    Exporting the 3D Map
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preparation-for-3d-printing">
+    Preparation for 3D-Printing
+  </a>
+<nav aria-label="Preparation for 3D-Printing" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slicing">
+    Slicing
+  </a>
+<nav aria-label="Slicing" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-variable-layer-height">
+    Using variable Layer Height
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inserting-a-pause">
+    Inserting a Pause
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#printing">
+    Printing
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dont-feel-like-building-it-yourself">
+    Don't feel like building it yourself?
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<nav class="md-tags">
+<a class="md-tag" href="../../tags/#3d-printing">3d-printing</a>
+<a class="md-tag" href="../../tags/#guide">guide</a>
+<a class="md-tag" href="../../tags/#gis">gis</a>
+<a class="md-tag" href="../../tags/#blender">blender</a>
+</nav>
+<a class="md-content__button md-icon" href="https://github.com/fgebhart/blog/edit/main/docs/blog/3d-print-topological-maps.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
+</a>
+<h1 id="how-to-easily-generate-and-3d-print-topological-maps">How to easily generate and 3D-print topological Maps</h1>
+<div class="admonition tldr">
+<p class="admonition-title">Tldr</p>
+<p>Head over to the <a href="https://3dmaps.streamlit.app/">mapa streamlit app</a> and generate a STL file which you can use for
+3d-printing. If you are interested in more customizations, keep on reading.</p>
+</div>
+<p>This guide will provide an overview of how to generate a 3D model of any place in the world for subsequent 3d-printing.
+It will show how to generate and download the STL file, but also how to customize and prepare it for printing.</p>
+<figure>
+<p><img _="," alt="3d-printed Mount Fuji in Japan" class="off-glb" loading="lazy" src="https://i.imgur.com/MFcVFhn.jpg" width="500">
+</img></p>
+<figcaption>3d-printed Mount Fuji in Japan</figcaption>
+</figure>
+<p>There are a bunch of tools out there<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> which allow for generating 3D models based on satellite elevation data (mostly
+referred to as <a href="https://en.wikipedia.org/wiki/Digital_elevation_model">DEM</a>). However, I found that all existing tools
+did either not have high resolution data or were not as flexible as I hoped them to be, which is why I built my own tool.
+Hence, this guide will demonstrate the usage of <a href="https://github.com/fgebhart/mapa">mapa</a>.</p>
+<h2 id="generating-stl-files-using-the-mapa-streamlit-app">Generating STL Files using the mapa Streamlit App</h2>
+<p><a href="https://github.com/fgebhart/mapa">mapa</a> is a tool for converting GeoTIFF data into a tiles-based representation. The
+library is based on <a href="https://numpy.org/">NumPy</a> and <a href="https://numba.pydata.org/">Numba</a> and provides a CLI API, a Python
+API, a <a href="https://jupyter.org/">Jupyter Notebook</a> interface and the <a href="https://3dmaps.streamlit.app/">streamlit app</a> which is
+built on top of mapa via the <a href="https://github.com/fgebhart/mapa-streamlit">mapa-streamlit</a> repository. In this guide we
+will focus on the usage of the mapa-streamlit web app, as it is the most convenient way. However, if you are curios I'd
+recommend to also check out the other options, as they provide even more flexibility.</p>
+<figure>
+<p><a href="https://3dmaps.streamlit.app/">
+<img _="," alt="Screenshot of the mapa streamlit app" loading="lazy" src="https://i.imgur.com/WRwXpeE.png" width="600">
+</img></a>
+</p>
+<figcaption>Screenshot of the mapa streamlit app</figcaption>
+</figure>
+<p>Follow the below steps to generate a STL file of any selection on the map.</p>
+<ol>
+<li>Go to the <a href="https://3dmaps.streamlit.app/">mapa streamlit web app</a>.</li>
+<li>Zoom in to your area of interest.</li>
+<li>Click the the black square on the left side of the map.</li>
+<li>Draw a rectangle.</li>
+<li>Hit the <kbd>Create STL</kbd> button.</li>
+<li>The app will now download the required data and compute the STL file in the background.</li>
+<li>Once finished, you can click the <kbd>Download STL</kbd> button.</li>
+</ol>
+<p>Unpack the downloaded zip file and inspect the computed STL file with your favorite STL file viewer. This is what an
+example could look like:</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/llvxlrk.png"><img _="," alt="Example of downloaded STL file" loading="lazy" src="https://i.imgur.com/llvxlrk.png" width="500"/></a>
+</p>
+<figcaption>Example of downloaded STL file</figcaption>
+</figure>
+<h2 id="customizations">Customizations</h2>
+<p>This section will outline how to:</p>
+<ul>
+<li>add text to the bottom of the model</li>
+<li>add slots for magnets into the model</li>
+</ul>
+<p>We will use <a href="https://www.blender.org/">blender</a> to customize the 3D model. Blender is a very powerful and 
+popular open-source 3D graphics software.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>I strongly recommend using a version of <strong>blender &gt;= 3.0.0</strong> to avoid any issues when working with text. You can
+<a href="https://www.blender.org/download/">download blender here</a>.</p>
+</div>
+<p>Once you have blender installed, open it up and import your downloaded STL file via: File → Import → Stl.</p>
+<h3 id="adding-text">Adding Text</h3>
+<p>Adding some text to your model will allow you to persist any kind of information into the model you'd like. This could
+of course be the name of the location, the GPS coordinates or a nice personal greeting in case the model is a present.</p>
+<h4 id="create-and-position-the-text-object">Create and position the Text Object</h4>
+<ol>
+<li>First zoom out to get a better overview of your model.</li>
+<li>Press <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> and then <span class="keys"><kbd class="key-t">T</kbd></span> to add text to your collection. Note that the text might be very tiny compared to
+the imported model.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/LVR6DxT.png"><img _="," alt="Inserted Text" loading="lazy" src="https://i.imgur.com/LVR6DxT.png" width="500"/></a>
+</figure></li>
+<li>Enter your text.</li>
+<li>Scale the text up to roughly match the size of your model. Try giving it a scale factor of 15 if you are not sure
+where to start.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/z9XslS5.png"><img _="," alt="Scaled Text" loading="lazy" src="https://i.imgur.com/z9XslS5.png" width="200"/></a>
+</figure></li>
+<li>Now rotate the text object. Usually rotating it by these numbers <code>X=0˚</code>, <code>Y=180˚</code> and <code>Z=90˚</code> should bring the text
+into the correct orientation. But this of course depends on the orientation of your model.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/21B1frK.png"><img _="," alt="Rotated Text" loading="lazy" src="https://i.imgur.com/21B1frK.png" width="500"/></a>
+</figure></li>
+<li>Move the text to your desired position - in this case into the middle of the bottom of the model.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/A0WnbM7.png"><img _="," alt="Moved into the Middle" loading="lazy" src="https://i.imgur.com/A0WnbM7.png" width="500"/></a>
+</figure>
+While <code>X</code>- and <code>Y</code>-locations are the relevant dimensions here, I recommend to also move the <code>Z</code>-Location to e.g. <code>-1</code>.
+It will make it easy for us to distinguish the text object from the elevation model later.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you are planning to also <a href="#adding-magnet-slots">add magnet slots</a> to your 3D model, you should ensure to leave
+enough room to the corners of the model.</p>
+</div>
+<h4 id="solidify-the-text-object">Solidify the Text Object</h4>
+<ol>
+<li>Next we need to turn the text object into a mesh. This can be done by first changing from "Edit Mode" into "Object
+Mode".
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/Ic7jckI.png"><img _="," alt="Change to Object Mode" loading="lazy" src="https://i.imgur.com/Ic7jckI.png" width="300"/></a>
+</figure></li>
+<li>Then click Object → Convert → Mesh.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/nTs0YpI.png"><img _="," alt="Convert to Mesh" loading="lazy" src="https://i.imgur.com/nTs0YpI.png" width="500"/></a>
+</figure></li>
+<li>Notice how the icon next to your text object changes and is now equal to the icon of your imported STL model (which 
+also is a mesh representation).
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/M6OkpVp.png"><img _="," alt="Icon has changed" loading="lazy" src="https://i.imgur.com/M6OkpVp.png" width="500"/></a>
+</figure></li>
+<li>Next we will extrude the text to a 3D object. Click on the "Modifier Properties" tab.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/BHBlb3o.png"><img _="," alt="Modifier Properties" loading="lazy" src="https://i.imgur.com/BHBlb3o.png" width="200"/></a>
+</figure></li>
+<li>Click on "Add Modifier" and select "Solidify".
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/3aBSRMu.png"><img _="," alt="Chose Solidify" loading="lazy" src="https://i.imgur.com/3aBSRMu.png" width="500"/></a>
+</figure></li>
+<li>Set the following parameters:<ul>
+<li>Mode: <code>Complex</code></li>
+<li>Thickness: <code>0.2</code> (This of course depends on the dimensions of your model. Just make sure to not punch holes through
+the model.)</li>
+<li>Offset: <code>-1.0</code>
+<figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/m89kG45.png"><img _="," alt="Configure Solidify" loading="lazy" src="https://i.imgur.com/m89kG45.png" width="200"/></a>
+</figure></li>
+</ul>
+</li>
+<li>Once configured, select "Apply" in the dropdown menu.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/PEXpd6y.png"><img _="," alt="Hit Apply" loading="lazy" src="https://i.imgur.com/PEXpd6y.png" width="500"/></a>
+</figure></li>
+</ol>
+<h4 id="subtract-the-text-object-from-the-map">Subtract the Text Object from the Map</h4>
+<ol>
+<li>Now it's time to subtract the text object from the map. To do so, click on "Add Modifier" again and chose "Boolean".
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/ZDmFCSU.png"><img _="," alt="Chose Boolean" loading="lazy" src="https://i.imgur.com/ZDmFCSU.png" width="500"/></a>
+</figure></li>
+<li>Chose the following options:<ul>
+<li><code>Difference</code></li>
+<li>Object <code>Text</code> (This should be the name of your text object, in my case this is <code>Text</code>.)
+<figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/4Hb7Xzw.png"><img _="," alt="Configure Boolean" loading="lazy" src="https://i.imgur.com/4Hb7Xzw.png" width="200"/></a>
+</figure></li>
+</ul>
+</li>
+<li>Again, once configured, select "Apply" from the dropdown menu.</li>
+<li>Now you successfully subtracted the text from the model. Before we are good to go though, you need to delete the
+text object, as it is still there and would also be exported alongside the map model.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/TeiYWRA.png"><img _="," alt="Delete Text Object" loading="lazy" src="https://i.imgur.com/TeiYWRA.png" width="300"/></a>
+</figure></li>
+<li>Finally verify the result looks as expected.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/suxyOzE.png"><img _="," alt="Finally Text was Added" loading="lazy" src="https://i.imgur.com/suxyOzE.png" width="400"/></a>
+</figure></li>
+</ol>
+<p>Now that we successfully added text to the model, you are good to jump over to
+<a href="#exporting-the-3d-model">exporting the 3D model</a> - or continue with further customizations in the upcoming section.</p>
+<h3 id="adding-magnet-slots">Adding Magnet Slots</h3>
+<p>Adding slots for little magnets in your model will allow you to easily mount the model to your fridge or some other
+magnetic surface. I found this a particularly helpful approach when trying to put your model into e.g. a picture frame.
+This way you don't have to deal with glue and you are still able to take the model out of the frame to have a closer look
+and inspect the text we've inserted at the bottom of it.</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/x3uKNa7.gif"><img _="," alt="Magnetic Map Model" loading="lazy" src="https://i.imgur.com/x3uKNa7.gif" width="400"/></a>
+</p>
+<figcaption>Example use case for Magnet Slots</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The magnets will be added into the model during printing. Therefore we will add a pause into the G-code. This will be
+discussed in more detail in the <a href="#preparation-for-3d-printing">preparation for 3D-printing</a> section.</p>
+</div>
+<h4 id="requirements">Requirements</h4>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://www.supermagnete.de/draw_svg/article/S-10-02-N.svg"><img _="," align="right" alt="Disc Magnet" loading="lazy," src="https://www.supermagnete.de/draw_svg/article/S-10-02-N.svg" width="300"/></a></p>
+<p>Obviously you need some magnets to be inserted into the slots we are going to prepare. For this purpose I recommend
+little magnet discs with a diameter of 10mm and a height of 2mm. You should be able to find these relatively easy online.
+I used to buy them in a dedicated magnets online shop but figured they are available across many online platforms
+eventually. It is of course possible to use magnets with other dimensions. In this case you need to ensure to adjust the
+dimensions of the magnet slots respectively. When buying such disc magnets, it is important to note, that <strong>the magnetic
+north and south pole must be on top and bottom</strong> of the disc, as per the image. If this is not the case the magnetic
+force will likely be too low to hold your model tight against any other surface. Usually vendors of such magnets describe
+the strength of a neodymium magnet with the mentioned dimensions to be in the area of 1 - 1.3kg.</p>
+<h4 id="create-and-position-a-cylinder">Create and position a Cylinder</h4>
+<ol>
+<li>If you don't have it open still, open up blender and import your STL file.</li>
+<li>In the top menu bar select the "Modelling" tab and click on Add → Mesh → Cylinder. Click anywhere on the screen to 
+insert the cylinder mesh object.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/3gZsWDc.png"><img _="," alt="Create Cylinder" loading="lazy" src="https://i.imgur.com/3gZsWDc.png" width="500"/></a>
+</figure></li>
+<li>
+<p>Next we will tweak the exact position of the cylinder. If you haven't changed the position of your model yet, choosing
+the following location and scale values will just work:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>X</th>
+<th>Y</th>
+<th>Z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Location</td>
+<td>7</td>
+<td>7</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>Scale</td>
+<td>5.1</td>
+<td>5.1</td>
+<td>1.05</td>
+</tr>
+</tbody>
+</table>
+<p>Check the values in the info pane on the right for more details:</p>
+</li>
+</ol>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/Lsc7dir.png"><img _="," alt="Set Position and Size of Cylinders" loading="lazy" src="https://i.imgur.com/Lsc7dir.png" width="500"/></a></p>
+</figure>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>In case you are using magnets with different dimensions (as mentioned above) you need to ensure to adjust the values
+for location and scale accordingly.</p>
+</div>
+<p>Note that <code>X=5.1</code> specifies the radius of the disc and thus results in a slot with a diameter of 10.2mm. This means that
+we will have a buffer of 0.2mm in the x- and y-dimension and a buffer of 0.1mm for the z-dimension. Based on my
+experiences this will leave just enough room for the magnet to firmly snap into the slot. Please note though, that the
+specs of such a buffer might vary from printer to printer as they depend on your nozzle size and slicing parameters.</p>
+<p>If you now select the cylinder model, you should see its highlighted shape shining through in the corner of the map model
+as per the above image.</p>
+<h4 id="multiply-the-cylinder">Multiply the Cylinder</h4>
+<ol>
+<li>To multiply the cylinder copy and paste it three times until you end up having four cylinder objects in your
+collection.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/Wf1VwzT.png"><img _="," alt="Multiply Cylinders" loading="lazy" src="https://i.imgur.com/Wf1VwzT.png" width="300"/></a>
+</figure></li>
+<li>
+<p>Now adjust the position of the three new cylinders to move them into the remaining corners of your model. Based on the
+chosen size of your model the location values for cylinders can be determined by using the following approach:</p>
+<table>
+<thead>
+<tr>
+<th>cylinder</th>
+<th>X</th>
+<th>Y</th>
+<th>Z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>x-7</td>
+<td>7</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>002</td>
+<td>x-7</td>
+<td>y-7</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>003</td>
+<td>7</td>
+<td>y-7</td>
+<td>1.5</td>
+</tr>
+</tbody>
+</table>
+<p>Where <code>x</code> is the length of your model in the x-dimension and <code>y</code> is the width in the y-dimension.</p>
+</li>
+<li>
+<p>After setting the correct location values for the remaining three cylinders, you should be able to do a quick visual
+check by selecting all four cylinders and looking at the model from the z-direction. The shape of cylinders should again
+shine through the map model and should be visible in the corners of the model just like this:
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/iQEG09U.png"><img _="," alt="Multiply Cylinders" loading="lazy" src="https://i.imgur.com/iQEG09U.png" width="500"/></a>
+</figure></p>
+</li>
+</ol>
+<h4 id="subtract-the-cylinders-from-the-map">Subtract the Cylinders from the Map</h4>
+<p>Now that we have four cylinders in the correct position, we need to subtract them from the map model. This can be done
+using the boolean modifier.</p>
+<ol>
+<li>Select your map model from the top-right collection and click "Add Modifier" in the "Modifier Properties" tab. From
+the list of modifiers, select the "Boolean" modifier, just like we did in the 
+<a href="#subtract-the-text-object-from-the-map">subtracting the text object</a> section. Again chose "Difference" as boolean
+operation and pick a cylinder as object to be used for subtraction.</li>
+<li>From the dropdown menu select and hit "Apply".
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/PEXpd6y.png"><img _="," alt="Hit Apply" loading="lazy" src="https://i.imgur.com/PEXpd6y.png" width="500"/></a>
+</figure></li>
+<li>Once the modifier was computed successfully, right-click the chosen cylinder in the collection and delete it.</li>
+</ol>
+<p>Repeat the previous steps three more times in order to subtract all cylinders from the map model.</p>
+<p>Once you are done with subtracting, toggle the "X-Ray" mode in the top-right corner. This will allow to again visually
+check the resulting magnet slots.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/gNzoMOc.png"><img _="," alt="X-Ray of Model with Slots" loading="lazy" src="https://i.imgur.com/gNzoMOc.png" width="500"/></a>
+</figure></p>
+<h3 id="exporting-the-3d-map">Exporting the 3D Map</h3>
+<p>After completing the customizations of the map model, we are ready to export the model. Select the model in the top-right
+collection and subsequently navigate to File → Export → Stl.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/LvA0Olw.png"><img _="," alt="Export STL file" loading="lazy" src="https://i.imgur.com/LvA0Olw.png" width="500"/></a>
+</figure></p>
+<h2 id="preparation-for-3d-printing">Preparation for 3D-Printing</h2>
+<p>This section will provide a few tips and tricks for slicing our 3D model. We will use
+<a href="https://www.prusa3d.com/page/prusaslicer_424/">PrusaSlicer</a> as it offers a few powerful features which we will leverage.
+PrusaSlicer is both open-source and free. It can be
+<a href="https://github.com/prusa3d/PrusaSlicer/releases">downloaded from its GitHub Release page</a>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Printing a model this large will likely eat up a day or more in printing time. It is not a complex print per se, but
+it would be good if you already have some experience with large prints in order to reduce the risk of failed prints
+and frustration.
+In terms of 3d-printing resources I usually recommend:</p>
+<ul>
+<li>the <a href="https://all3dp.com/2/3d-print-quality-12-tips-on-how-to-improve-it/">all3dp basics</a> and</li>
+<li>the <a href="https://help.prusa3d.com/">prusa knowledge base</a>.</li>
+</ul>
+<p>However, the web contains a tremendous amount of 3d-printing resources which cover all sorts of problems.</p>
+</div>
+<h3 id="slicing">Slicing</h3>
+<p>During the slicing of the model we will</p>
+<ul>
+<li>make use of the variable layer height feature to reduce print time and</li>
+<li>insert a pause into the G-code in order to be able to insert the magnets into their slots.</li>
+</ul>
+<h4 id="using-variable-layer-height">Using variable Layer Height</h4>
+<p>The variable layer height feature allows to have different layer heights throughout the height of your model. This is
+particularly helpful for a topological map model like this as the first few layers do not need high precision at all. In
+most cases these are of rectangular shape with very little details. The only details in the first few layers are the text
+and the magnet slots, but their shape is constant along the z-axis, thus their outcome is independent of the configured
+layer height.</p>
+<ol>
+<li>Open up PrusaSlicer and simply drag and drop your customized STL file into it.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/mDBdn0w.png"><img _="," alt="STL imported in Slicer" loading="lazy" src="https://i.imgur.com/mDBdn0w.png" width="500"/></a>
+</figure></li>
+<li>First, I recommend to initially slice your model with the default settings (i.e. 0.2mm layer height) in order to get
+an impression of how long such a print will take. Slicing my model with a 0.2mm layer height and 10% infill would take
+roughly 11.5h.</li>
+<li>After the slicing computation has finished, we should scroll through all layers, to quickly inspect whether everything
+looks as expected. Have a closer look at the outcome of the text and the magnet slots!
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/S24Ujkt.png"><img _="," alt="Sliced STL" loading="lazy" src="https://i.imgur.com/S24Ujkt.png" width="500"/></a>
+</figure></li>
+<li>If everything looks good, go back to the "3D editor view" of the plater and click on the variable layer height feature
+in the top bar.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/GR4LMjU.png"><img _="," alt="Variable Layer Height Button" loading="lazy" src="https://i.imgur.com/GR4LMjU.png" width="500"/></a>
+</figure></li>
+<li>Drag the slider in of the "Quality / Speed" option to the left most position and hit the <kbd>Adaptive</kbd> button
+next to it. The result should look similar to the following image. The algorithm will automatically detect the level of
+detail from one layer to the next one and set the layer height accordingly.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/yy6d0jv.png"><img _="," alt="Variable Layer Sliced" loading="lazy" src="https://i.imgur.com/yy6d0jv.png" width="500"/></a>
+</figure>
+If you hover over the individual layers in the layer stack column, you'll see that the first few layers will get a much
+coarser layer height (in my case ~0.25mm) compared to the remaining upper layer heights (~0.07mm). This
+particular use cases really leverages the potential of the variable layer height feature if you want to find the sweet
+spot between quality and speed. Note though, using variable layer height increases the print time to ~21h in my example.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Topological maps with coarse layer heights also look super interesting. I recommend trying out a smaller model with
+a layer height of e.g. 0.2mm or even 0.35mm. In this case there is no need to use the adaptive layer height.</p>
+</div>
+<h4 id="inserting-a-pause">Inserting a Pause</h4>
+<p>Inserting a pause is required to be able to insert the magnets during the print. We will insert the pause right before
+the slots will be closed with the upcoming layer.</p>
+<ol>
+<li>First we have to find the correct layer which closes the magnet slots. Consider the following two images. The first
+image shows layer 11, which is the last layer of the slot, before closing it.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/cZMO8NN.png"><img _="," alt="Last Layer of Slot" loading="lazy" src="https://i.imgur.com/cZMO8NN.png" width="500"/></a>
+</figure>
+    The second image shows layer 12 which is the first closing layer.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/RfgG7Mf.png"><img _="," alt="First Closing Layer" loading="lazy" src="https://i.imgur.com/RfgG7Mf.png" width="500"/></a>
+</figure></li>
+<li>Since PrusaSlicer will insert a configured pause always at the beginning of a layer, we need to select the first
+closing layer. Layer 12 in this case.</li>
+<li>Ensure you are on the first closing layer and right-click on the little orange plus sign next to the layer
+cursor.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/iS3fb04.png"><img _="," alt="Click on Plus" loading="lazy" src="https://i.imgur.com/iS3fb04.png" width="200"/></a>
+</figure></li>
+<li>In the pop-up menu select "Add pause print (M601)" and enter a text message into the dialog.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/r96WTlF.png"><img _="," alt="Click on Plus" loading="lazy" src="https://i.imgur.com/r96WTlF.png" width="500"/></a>
+</figure></li>
+<li>Notice the little pause symbol on the layer you inserted it, which is now visible in the layer stack column.
+    <figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/QxwVbsq.png"><img _="," alt="Click on Plus" loading="lazy" src="https://i.imgur.com/QxwVbsq.png" width="200"/></a>
+</figure></li>
+<li>All set! Now we are good to go with slicing and subsequently exporting of the G-code.</li>
+</ol>
+<h2 id="printing">Printing</h2>
+<p>As mentioned above, printing a 3-dimensional map usually is not a complex print in itself. However, as it will take
+around one day, you should be prepared with enough time. And filament.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When it comes to filament, I highly recommend using rainbow filament 🌈 as it will emphasize the altitude of your
+model. Rainbow filament definitely is my favorite choice for these kind of topological map prints.
+<figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/6k57nLp.jpg"><img _="," alt="Click on Plus" loading="lazy" src="https://i.imgur.com/6k57nLp.jpg" width="300"/></a>
+<figcaption>Colorful Print of Kilimanjaro</figcaption>
+</figure>
+Other than that, I played around a little with painting models. Turns out I'm not a very talented painter. Maybe
+<em>you</em> are!</p>
+</div>
+<p>During the print process itself there is nothing special to be taken care of except inserting the magnets of course. In
+general it is recommended to ensure the magnetic orientation of the magnets to be the same. However, this is apparently
+not needed if you plan to put your model on the fridge only. Yet, I suggest to simply use a fifth magnet and verify the
+orientation of north and south pole of each magnet before putting it into the slots.</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/m7iyVJP.jpg"><img _="," alt="Magnets Inserted" loading="lazy" src="https://i.imgur.com/m7iyVJP.jpg" width="300"/></a></p>
+</figure>
+<p>Happy Printing!</p>
+<h2 id="dont-feel-like-building-it-yourself">Don't feel like building it yourself?</h2>
+<p>Like the look, but don't feel like completing all the above steps? Or just don't have the time? I'm here to help. I do
+already have quite some practice with generating, customizing, slicing and printing of topological maps. Check out <a href="https://3dmaps.fgebhart.dev/">my
+little shop</a> and feel free to reach out in case of interest.</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/VPOLRM7.jpg"><img _="," alt="Finished Print" loading="lazy" src="https://i.imgur.com/VPOLRM7.jpg" width="500"/></a>
+</p>
+<figcaption>Table Mountain in Cape Town</figcaption>
+</figure>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>Some examples of alternative tools for generating 3D elevation models are
+<a href="https://jthatch.com/Terrain2STL/">Terrain2ST</a>, <a href="https://touchterrain.geol.iastate.edu/">TouchTerrain</a> and
+<a href="https://map2stl.com/">map2stl</a> just to name a few. <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 27, 2023</span>
+<br/>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 27, 2023</span>
+</small>
+</div>
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated code here -->
+<script async="" crossorigin="anonymous" data-category-id="DIC_kwDOH-BnJ84CRb0P" data-emit-metadata="0" data-input-position="bottom" data-lang="en" data-mapping="pathname" data-reactions-enabled="1" data-repo="fgebhart/blog" data-repo-id="R_kgDOH-BnJw" data-strict="0" data-theme="preferred_color_scheme" src="https://giscus.app/client.js">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Tags" class="md-footer__link md-footer__link--prev" href="../../tags/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Tags
+            </div>
+</div>
+</a>
+<a aria-label="Next: Auto-sync ZEIT Epub to your Tolino" class="md-footer__link md-footer__link--next" href="../auto-sync-zeit-epub-to-your-tolino/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Auto-sync ZEIT Epub to your Tolino
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2022 Fabian Gebhart
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://fgebhart.dev" rel="noopener" target="_blank" title="My website">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M96 0C60.7 0 32 28.7 32 64v384c0 35.3 28.7 64 64 64h288c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H96zm112 288h64c44.2 0 80 35.8 80 80 0 8.8-7.2 16-16 16H144c-8.8 0-16-7.2-16-16 0-44.2 35.8-80 80-80zm96-96c0 35.3-28.7 64-64 64s-64-28.7-64-64 28.7-64 64-64 64 28.7 64 64zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V80zm-16 112c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16v-64c0-8.8-7.2-16-16-16zm16 144c0-8.8-7.2-16-16-16s-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16v-64z"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/FabianGebhart" rel="noopener" target="_blank" title="My twitter">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/fgebhart" rel="noopener" target="_blank" title="My github">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+<a class="md-social__link" href="https://www.linkedin.com/in/fabian-gebhart/" rel="noopener" target="_blank" title="My linkedin">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+</a>
+<a class="md-social__link" href="https://fosstodon.org/@fgebhart" rel="noopener" target="_blank" title="My mastodon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.top", "header.autohide", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.48f2be22.min.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
