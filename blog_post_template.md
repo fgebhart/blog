@@ -5,6 +5,7 @@ comments: true
 tags:
   - some
   - tags
+glightbox: false    # remove if you want to enable image zoom on this page
 ---
 
 # My First Blog Post
