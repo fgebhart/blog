@@ -7,6 +7,7 @@ tags:
   - github pages
   - guide
   - namecheap
+glightbox: false
 ---
 
 # How to Use a Custom Namecheap Domain with GitHub Pages?

@@ -9,14 +9,15 @@ tags:
   - newspaper
   - python
   - selenium
+glightbox: false
 ---
 
 # How to automatically sync your ZEIT Newspaper to your Tolino Cloud?
 
 This guide will outline the steps needed to set up a scheduled syncing mechanism that downloads the [ZEIT](https://premium.zeit.de/)
-newspaper and uploads it to your [Tolino cloud](webreader.mytolino.com/). This mechanism will run once per week on GitHub
-Actions, so you don't have to worry about execution or deployment. The automatism is based on [Selenium](https://selenium-python.readthedocs.io/),
-which takes care of clicking the relevant browser buttons for you. 
+newspaper and uploads it to your [Tolino cloud](https://webreader.mytolino.com/). This mechanism will run once per week
+on GitHub Actions, so you don't have to worry about execution or deployment. The automatism is based on
+[Selenium](https://selenium-python.readthedocs.io/), which takes care of clicking the relevant browser buttons for you. 
 
 <figure markdown>
   ![ZEIT Tolino Cover Picture](https://i.imgur.com/l5OJSUv.jpg){ width="500", loading=lazy }

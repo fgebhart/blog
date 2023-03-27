@@ -50,6 +50,7 @@ theme:
 plugins:
   - search
   - awesome-pages
+  - glightbox
   - social:
       cards: !ENV [CARDS, false]
   - tags:
@@ -61,9 +62,10 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - admonition
+  - abbr
+  - footnotes
   - pymdownx.details
   - pymdownx.keys
-  - abbr
   - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.emoji:
