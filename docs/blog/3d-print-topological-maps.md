@@ -7,6 +7,8 @@ tags:
   - guide
   - gis
   - blender
+  - slicing
+  - mapa
 ---
 
 
