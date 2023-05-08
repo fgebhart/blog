@@ -232,10 +232,10 @@ insert the cylinder mesh object.
 3. Next we will tweak the exact position of the cylinder. If you haven't changed the position of your model yet, choosing
 the following location and scale values will just work:
 
-    |        | X   | Y   | Z    |
-    |--------|-----|-----|------|
-    |Location| 7   | 7   | 1.5  |
-    |Scale   | 5.1 | 5.1 | 1.05 |
+    |        | X    | Y    | Z    |
+    |--------|------|------|------|
+    |Location| 7    | 7    | 1.5  |
+    |Scale   | 5.15 | 5.15 | 1.1  |
 
     Check the values in the info pane on the right for more details:
 
@@ -247,8 +247,8 @@ the following location and scale values will just work:
     In case you are using magnets with different dimensions (as mentioned above) you need to ensure to adjust the values
     for location and scale accordingly.
 
-Note that `X=5.1` specifies the radius of the disc and thus results in a slot with a diameter of 10.2mm. This means that
-we will have a buffer of 0.2mm in the x- and y-dimension and a buffer of 0.1mm for the z-dimension. Based on my
+Note that `X=5.15` specifies the radius of the disc and thus results in a slot with a diameter of 10.3mm. This means that
+we will have a buffer of 0.3mm in the x- and y-dimension and a buffer of 0.2mm for the z-dimension. Based on my
 experiences this will leave just enough room for the magnet to firmly snap into the slot. Please note though, that the
 specs of such a buffer might vary from printer to printer as they depend on your nozzle size and slicing parameters.
 
@@ -359,7 +359,11 @@ layer height.
 an impression of how long such a print will take. Slicing my model with a 0.2mm layer height and 10% infill would take
 roughly 11.5h.
 3. After the slicing computation has finished, we should scroll through all layers, to quickly inspect whether everything
-looks as expected. Have a closer look at the outcome of the text and the magnet slots!
+looks as expected. Have a closer look at the outcome of the text and the magnet slots! Consider the following items for
+verification:
+    - Check that the magnet slots do not overlap with the text or that there is enough space between.
+    - Check that there are sufficient layers above the magnet slots, such that the magnets do not shine though.
+    - Check that the orientation of the text is as expected.
     <figure markdown>
       ![Sliced STL](https://i.imgur.com/S24Ujkt.png){ width="500", loading=lazy }
     </figure>
