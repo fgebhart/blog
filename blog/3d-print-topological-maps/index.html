@@ -700,9 +700,9 @@ the following location and scale values will just work:</p>
 </tr>
 <tr>
 <td>Scale</td>
-<td>5.1</td>
-<td>5.1</td>
-<td>1.05</td>
+<td>5.15</td>
+<td>5.15</td>
+<td>1.1</td>
 </tr>
 </tbody>
 </table>
@@ -717,8 +717,8 @@ the following location and scale values will just work:</p>
 <p>In case you are using magnets with different dimensions (as mentioned above) you need to ensure to adjust the values
 for location and scale accordingly.</p>
 </div>
-<p>Note that <code>X=5.1</code> specifies the radius of the disc and thus results in a slot with a diameter of 10.2mm. This means that
-we will have a buffer of 0.2mm in the x- and y-dimension and a buffer of 0.1mm for the z-dimension. Based on my
+<p>Note that <code>X=5.15</code> specifies the radius of the disc and thus results in a slot with a diameter of 10.3mm. This means that
+we will have a buffer of 0.3mm in the x- and y-dimension and a buffer of 0.2mm for the z-dimension. Based on my
 experiences this will leave just enough room for the magnet to firmly snap into the slot. Please note though, that the
 specs of such a buffer might vary from printer to printer as they depend on your nozzle size and slicing parameters.</p>
 <p>If you now select the cylinder model, you should see its highlighted shape shining through in the corner of the map model
@@ -838,10 +838,16 @@ layer height.</p>
 an impression of how long such a print will take. Slicing my model with a 0.2mm layer height and 10% infill would take
 roughly 11.5h.</li>
 <li>After the slicing computation has finished, we should scroll through all layers, to quickly inspect whether everything
-looks as expected. Have a closer look at the outcome of the text and the magnet slots!
-    <figure markdown="">
+looks as expected. Have a closer look at the outcome of the text and the magnet slots! Consider the following items for
+verification:<ul>
+<li>Check that the magnet slots do not overlap with the text or that there is enough space between.</li>
+<li>Check that there are sufficient layers above the magnet slots, such that the magnets do not shine though.</li>
+<li>Check that the orientation of the text is as expected.
+<figure markdown="">
 <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://i.imgur.com/S24Ujkt.png"><img _="," alt="Sliced STL" loading="lazy" src="https://i.imgur.com/S24Ujkt.png" width="500"/></a>
 </figure></li>
+</ul>
+</li>
 <li>If everything looks good, go back to the "3D editor view" of the plater and click on the variable layer height feature
 in the top bar.
     <figure markdown="">
@@ -939,7 +945,7 @@ little shop</a> and feel free to reach out in case of interest.</p>
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 27, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 8, 2023</span>
 <br/>
         Created:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 27, 2023</span>
