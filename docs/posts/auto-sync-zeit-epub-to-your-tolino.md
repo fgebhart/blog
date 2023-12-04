@@ -1,7 +1,8 @@
 ---
-title: Auto-sync ZEIT Epub to your Tolino
+slug: auto-sync-zeit-epub-to-your-tolino
 description: Automatically Sync your ZEIT Newspaper to your Tolino Cloud using Selenium and GitHub Actions
 comments: true
+date: 2022-09-22
 tags:
   - ebook
   - github actions
@@ -10,6 +11,8 @@ tags:
   - python
   - selenium
 glightbox: false
+categories:
+  - Python
 ---
 
 # How to automatically sync your ZEIT Newspaper to your Tolino Cloud?
@@ -20,9 +23,11 @@ on GitHub Actions, so you don't have to worry about execution or deployment. The
 [Selenium](https://selenium-python.readthedocs.io/), which takes care of clicking the relevant browser buttons for you. 
 
 <figure markdown>
-  ![ZEIT Tolino Cover Picture](https://i.imgur.com/l5OJSUv.jpg){ width="500", loading=lazy }
+  ![ZEIT Tolino Cover Picture](https://i.imgur.com/l5OJSUv.jpg){ width="400", loading=lazy }
   <figcaption>Let's make reading the newspaper on your Tolino even more fun!</figcaption>
 </figure>
+
+<!-- more -->
 
 
 ## Motivation

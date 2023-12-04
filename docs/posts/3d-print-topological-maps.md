@@ -1,7 +1,10 @@
 ---
-title: 3D-print Topological Maps
+slug: 3d-print-topological-maps
 description: Easily generate a STL file for 3D printing from any Place in the World!
 comments: true
+authors:
+  - fgebhart
+date: 2023-03-27
 tags:
   - 3d-printing
   - guide
@@ -9,22 +12,26 @@ tags:
   - blender
   - slicing
   - mapa
+categories:
+  - 3D-Printing
 ---
 
 
 # How to easily generate and 3D-print topological Maps
 
-!!! TLDR
-    Head over to the [mapa streamlit app](https://3dmaps.streamlit.app/) and generate a STL file which you can use for
-    3d-printing. If you are interested in more customizations, keep on reading.
-
 This guide will provide an overview of how to generate a 3D model of any place in the world for subsequent 3d-printing.
 It will show how to generate and download the STL file, but also how to customize and prepare it for printing.
 
 <figure markdown>
-  ![3d-printed Mount Fuji in Japan](https://i.imgur.com/MFcVFhn.jpg){ width="500", loading=lazy .off-glb }
+  ![3d-printed Mount Fuji in Japan](https://i.imgur.com/MFcVFhn.jpg){ width="400", loading=lazy .off-glb }
   <figcaption>3d-printed Mount Fuji in Japan</figcaption>
 </figure>
+
+<!-- more -->
+
+!!! TLDR
+    Head over to the [mapa streamlit app](https://3dmaps.streamlit.app/) and generate a STL file which you can use for
+    3d-printing. If you are interested in more customizations, keep on reading.
 
 There are a bunch of tools out there[^1] which allow for generating 3D models based on satellite elevation data (mostly
 referred to as [DEM](https://en.wikipedia.org/wiki/Digital_elevation_model)). However, I found that all existing tools
