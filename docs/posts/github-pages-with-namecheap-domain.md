@@ -1,5 +1,5 @@
 ---
-title: GitHub Pages with Namecheap Domain
+slug: gitHub-pages-with-namecheap-domain
 description: Configure a custom domain obtained from Namecheap for your static website hosted on GitHub Pages
 comments: true
 tags:
@@ -7,6 +7,9 @@ tags:
   - github pages
   - guide
   - namecheap
+date: 2022-09-19
+categories:
+  - Blogging
 glightbox: false
 ---
 
@@ -15,8 +18,10 @@ This post will guide you through the different steps needed to configure a custo
 domain with your static website hosted on GitHub Pages.
 
 <figure markdown>
-  ![ZEIT Tolino Cover Picture](https://i.imgur.com/vecomx7.png){ width="500", loading=lazy }
+  ![ZEIT Tolino Cover Picture](https://i.imgur.com/vecomx7.png){ width="400", loading=lazy }
 </figure>
+
+<!-- more -->
 
 !!! Note
     This guide focuses on [Namecheap](https://www.namecheap.com/) as a domain name provider. The overall approach is

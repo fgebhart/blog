@@ -55,8 +55,18 @@ plugins:
       cards: !ENV [CARDS, false]
   - tags:
       tags_file: tags.md
-  - git-revision-date-localized:
-      enable_creation_date: true
+  - blog:
+      blog_dir: .
+      post_url_date_format: yyyy
+      post_url_format: "{date}/{slug}"
+      archive_toc: true
+      archive_url_format: "{date}"
+      archive_name: Posts
+      categories_toc: true
+      categories_allowed:
+        - 3D-Printing
+        - Python
+        - Blogging
 
 markdown_extensions:
   - attr_list
@@ -93,4 +103,4 @@ extra:
       link: https://fosstodon.org/@fgebhart
       name: My mastodon
 
-copyright: Copyright &copy; 2022 Fabian Gebhart
+copyright: Copyright &copy; <script>document.write(/\d{4}/.exec(Date())[0])</script> Fabian Gebhart
