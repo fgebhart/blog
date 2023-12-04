@@ -2,32 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://blog.fgebhart.dev/</loc>
-         <lastmod>2023-11-18</lastmod>
+         <lastmod>2023-12-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://blog.fgebhart.dev/about/</loc>
+         <lastmod>2023-12-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.fgebhart.dev/tags/</loc>
-         <lastmod>2023-11-18</lastmod>
+         <lastmod>2023-12-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://blog.fgebhart.dev/blog/3d-print-topological-maps/</loc>
-         <lastmod>2023-11-18</lastmod>
+         <loc>https://blog.fgebhart.dev/2023/3d-print-topological-maps/</loc>
+         <lastmod>2023-12-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://blog.fgebhart.dev/blog/auto-sync-zeit-epub-to-your-tolino/</loc>
-         <lastmod>2023-11-18</lastmod>
+         <loc>https://blog.fgebhart.dev/2022/auto-sync-zeit-epub-to-your-tolino/</loc>
+         <lastmod>2023-12-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://blog.fgebhart.dev/blog/github-pages-with-namecheap-domain/</loc>
-         <lastmod>2023-11-18</lastmod>
+         <loc>https://blog.fgebhart.dev/2022/gitHub-pages-with-namecheap-domain/</loc>
+         <lastmod>2023-12-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://blog.fgebhart.dev/2023/</loc>
+         <lastmod>2023-12-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://blog.fgebhart.dev/2022/</loc>
+         <lastmod>2023-12-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://blog.fgebhart.dev/category/3d-printing/</loc>
+         <lastmod>2023-12-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://blog.fgebhart.dev/category/python/</loc>
+         <lastmod>2023-12-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://blog.fgebhart.dev/category/blogging/</loc>
+         <lastmod>2023-12-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.fgebhart.dev/tags/</loc>
-         <lastmod>2023-11-18</lastmod>
+         <lastmod>2023-12-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
