@@ -3,6 +3,8 @@ slug: auto-sync-zeit-epub-to-your-tolino
 description: Automatically Sync your ZEIT Newspaper to your Tolino Cloud using Selenium and GitHub Actions
 comments: true
 date: 2022-09-22
+authors:
+  - fgebhart
 tags:
   - ebook
   - github actions

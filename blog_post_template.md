@@ -1,10 +1,15 @@
 ---
-title: some title
+slug: some-title-for-slug
 description: some description (will be visible on social cards)
 comments: true
+authors:
+  - fgebhart
 tags:
   - some
   - tags
+date: 2023-12-06
+categories:
+  - Blogging
 glightbox: false    # remove if you want to enable image zoom on this page
 ---
 
