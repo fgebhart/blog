@@ -2,6 +2,8 @@
 slug: gitHub-pages-with-namecheap-domain
 description: Configure a custom domain obtained from Namecheap for your static website hosted on GitHub Pages
 comments: true
+authors:
+  - fgebhart
 tags:
   - dns
   - github pages
